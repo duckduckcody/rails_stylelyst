@@ -1,11 +1,16 @@
+<a href="/clothes/settings">Settings</a>
 <h1>Clothes</h1>
 <div class="card-container">
-<% @clothes.each do |clothe| %>
-    <div class="card">
-        <p><%= clothe['name'] %> <%= clothe['price'] %></p>
-        <a href="<%= clothe['link'] %>">
-            <img src="<%= clothe['image'] %>">
-        </a>
-    </div>
+<% if @clothes %>
+    <% @clothes.each do |clothe| %>
+        <div class="card">
+            <p><%= clothe['name'] %> <%= clothe['price'] %></p>
+            <a href="<%= clothe['link'] %>">
+                <img src="<%= clothe['image'] %>">
+            </a>
+        </div>
+    <% end %>
+<% else %>
+    <p>No Clothes Found</p>
 <% end %>
 </div>

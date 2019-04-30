@@ -1,16 +1,54 @@
+<a href="/clothes">Clothes</a>
 <h1>Settings</h1>
-
-<h3>Websites</h3>
-<% @websites.each do |website| %>
-    <p><%= website.name %>(<%= website.url%>)</p>
-<% end %>
 
 <h3>Genders</h3>
 <% @genders.each do |gender| %>
-    <p><%= gender.name %></p>
+    <label class="radio">
+        <input type="radio" name="gender_id" value="<%=gender[:id]%>"
+            <% if @user_settings[:gender_id].to_i == gender[:id] %>checked<% end %>
+        />
+        <%= gender[:name] %>
+    </label>
 <% end %>
 
 <h3>Categories</h3>
 <% @categories.each do |category| %>
-    <p><%= category.name %></p>
+    <label class="radio">
+        <input type="radio" name="category_id" value="<%=category[:id]%>"
+            <% if @user_settings[:category_id].to_i == category[:id] %>checked<% end %>
+        />
+        <%= category[:name] %>
+    </label>
 <% end %>
+
+<h3>Websites</h3>
+<div id="container-websites">
+<% @websites.each do |website| %>
+    <label class="checkbox">
+        <input type="checkbox" name="<%=website[:id]%>" value="<%=website[:id]%>"
+            <% if @user_settings[:website_ids].include? website[:id].to_s %>checked<% end %>
+        />
+        <%= website[:name] %> (<%= website[:url] %>)
+    </label>
+<% end %>
+</div>
+
+<div style="margin-top:15px">
+    <button type="button" id="form-submit-button">Submit</button>
+    <a href="/clothes/index">Cancel</a>
+</div>
+
+<script>
+document.getElementById('form-submit-button').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.cookie = "gender_id=" + parseInt(document.querySelector('input[name="gender_id"]:checked').value);
+    document.cookie = "category_id=" + parseInt(document.querySelector('input[name="category_id"]:checked').value);
+    document.cookie = "website_ids=" + collectWebsiteInputs();
+    window.location = "/clothes";
+});
+
+function collectWebsiteInputs() {
+    var websites = document.getElementById("container-websites").getElementsByTagName("input")
+    return [].slice.call(websites).filter(website => website.checked).map(website => parseInt(website.name));
+}
+</script>

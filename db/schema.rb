@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_184142) do
+ActiveRecord::Schema.define(version: 2019_04_29_065658) do
 
   create_table "Scrapers", force: :cascade do |t|
     t.string "container_selector"
@@ -60,6 +60,18 @@ ActiveRecord::Schema.define(version: 2019_04_26_184142) do
     t.datetime "updated_at", null: false
     t.integer "scraper_id"
     t.index ["scraper_id"], name: "index_scraper_components_on_scraper_id"
+  end
+
+  create_table "website_pages", force: :cascade do |t|
+    t.string "url_extension"
+    t.integer "gender_id"
+    t.integer "category_id"
+    t.integer "website_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_website_pages_on_category_id"
+    t.index ["gender_id"], name: "index_website_pages_on_gender_id"
+    t.index ["website_id"], name: "index_website_pages_on_website_id"
   end
 
   create_table "websites", force: :cascade do |t|

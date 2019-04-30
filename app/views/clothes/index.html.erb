@@ -10,6 +10,10 @@
             </a>
         </div>
     <% end %>
+    <div class="card">
+    <p>Page:<%=@page%></p>
+        <a href="/clothes?page=<%=@page.to_i + 1%>">Next Page</a>
+    </div>
 <% else %>
     <p>No Clothes Found</p>
 <% end %>

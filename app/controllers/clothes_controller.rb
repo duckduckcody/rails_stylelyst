@@ -1,9 +1,10 @@
 class ClothesController < ApplicationController
   def index
+    @page = (params[:page] ||= '1')
     @user_settings = UserSettingsService.call(cookies)
     @user_settings[:website_ids].each do |website_id|
       @website = Website.find(website_id)
-      @clothes = @website.scrape(@user_settings)
+      @clothes = @website.scrape(@user_settings, @page)
     end
   end
 

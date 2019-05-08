@@ -1,0 +1,2 @@
+class WebsiteUrlFunction < ApplicationRecord
+end

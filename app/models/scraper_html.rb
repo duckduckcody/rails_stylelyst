@@ -1,5 +1,5 @@
 class ScraperHtml < ApplicationRecord
-    belongs_to :website_url_html
+    has_many :website_url_htmls
     has_many :scraper_html_components
     has_many :scraper_html_component_texts
     has_many :scraper_html_component_prices

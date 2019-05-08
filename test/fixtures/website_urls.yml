@@ -1,13 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  url_extension: MyString
-  gender: one
-  category: one
-  website: one
+  WebsiteUrlType: one
+  Website: one
 
 two:
-  url_extension: MyString
-  gender: two
-  category: two
-  website: two
+  WebsiteUrlType: two
+  Website: two

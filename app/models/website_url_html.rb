@@ -2,10 +2,11 @@ require 'nokogiri'
 require 'open-uri'
 
 class WebsiteUrlHtml < ApplicationRecord
-  has_one :scraper_html
   belongs_to :website
+  belongs_to :website_url_function
   belongs_to :gender, optional: true
   belongs_to :category, optional: true
+  belongs_to :scraper_html
   
   def generate_query_string(params)
     '?' + {self.website.query_string_key_page => params[:page]}.to_query

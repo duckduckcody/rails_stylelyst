@@ -1,5 +1,8 @@
 {
   "name": "stylelyst",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "vanilla-lazyload": "^12.0.0",
+    "vue": "^2.6.10"
+  }
 }

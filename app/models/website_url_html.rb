@@ -4,7 +4,6 @@ require 'open-uri'
 class WebsiteUrlHtml < ApplicationRecord
   belongs_to :website
   belongs_to :website_url_function
-  belongs_to :gender, optional: true
   belongs_to :category, optional: true
   belongs_to :scraper_html
   
@@ -19,6 +18,6 @@ class WebsiteUrlHtml < ApplicationRecord
 
   def scrape(params)
     @html = Nokogiri::HTML(open(generate_url(params)))
-    self.scraper_html.scrape(@html)
+    self.scraper_html.scrape(@html, self.website.url)
   end
 end

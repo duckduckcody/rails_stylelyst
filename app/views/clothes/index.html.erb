@@ -5,8 +5,8 @@
     <% @clothes.each do |clothe| %>
         <div class="card">
             <p><%= clothe['name'] %> <%= clothe['price'] %></p>
-            <a href="<%= clothe['link'] %>">
-                <img src="<%= clothe['image'] %>">
+            <a href="<%= clothe['link'] %>" target="_blank">
+                <img class="lazy" data-src="<%= clothe['image'] %>">
             </a>
         </div>
     <% end %>

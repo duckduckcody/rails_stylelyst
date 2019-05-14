@@ -4,7 +4,6 @@ https://github.com/rails/rails/blob/master/actionview/app/assets/javascripts
 Released under the MIT license
  */
 
-
 (function() {
   var context = this;
 

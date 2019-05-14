@@ -8,7 +8,6 @@
 @female_tops = Category.create!(name: 'All Tops', gender: @female)
 @female_bottoms = Category.create!(name: 'All Bottoms', gender: @female)
 @female_jackets = Category.create!(name: 'Jackets', gender: @female)
-@female_test = Category.create!(name: 'Female Test', gender: @female)
 # url functions
 @url_function_search = WebsiteUrlFunction.create!(name: 'search')
 @url_function_page = WebsiteUrlFunction.create!(name: 'page')

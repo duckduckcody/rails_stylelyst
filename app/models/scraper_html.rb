@@ -7,7 +7,7 @@ class ScraperHtml < ApplicationRecord
     has_many :scraper_html_component_links
     
     def scrape(html, base_url)
-        html.css(self.container_selector).map { |container|
+        return html.css(self.container_selector).map { |container|
             Hash[self.scraper_html_components.map { |component| 
                 [component.name, component.scrape({:html=>container,:base_url=>base_url})]
             }]

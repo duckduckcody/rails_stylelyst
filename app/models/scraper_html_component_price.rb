@@ -1,5 +1,9 @@
 class ScraperHtmlComponentPrice < ScraperHtmlComponent
     def scrape(params)
-        params[:html].css(self.selector).text.tr('$','').to_f
+        begin
+            params[:html].css(self.selector).text.tr('$','').to_f
+        rescue
+            nil
+        end
     end
 end

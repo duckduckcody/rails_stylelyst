@@ -17,7 +17,10 @@ class WebsiteUrlHtml < ApplicationRecord
   end
 
   def scrape(params)
-    @html = Nokogiri::HTML(open(generate_url(params)))
-    self.scraper_html.scrape(@html, self.website.url)
+    @url = generate_url(params)
+    Rails.cache.fetch(@url) do
+      @html = Nokogiri::HTML(open(@url))
+      self.scraper_html.scrape(@html, self.website.url)
+    end
   end
 end

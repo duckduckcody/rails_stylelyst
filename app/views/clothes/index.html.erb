@@ -1,20 +1,26 @@
 <a href="/clothes/settings">Settings</a>
 <h1>Clothes</h1>
+<!--
+<form action="/clothes/search">
+    <input type="text" class="search" name="query" placeholder="search for clothes" />
+    <button type="submit">Search</button>
+</form>
+-->
 <div class="card-container">
-<% if @clothes %>
-    <% @clothes.each do |clothe| %>
-        <div class="card">
-            <p><%= clothe['name'] %> <%= clothe['price'] %></p>
-            <a href="<%= clothe['link'] %>" target="_blank">
-                <img class="lazy" data-src="<%= clothe['image'] %>">
-            </a>
-        </div>
+    <% if @clothes.present? %>
+        <% @clothes.each do |clothe| %>
+            <div class="card">
+                <p><%= clothe['name'] %> <%= clothe['price'] %></p>
+                <a href="<%= clothe['link'] %>" target="_blank">
+                    <img class="lazy" data-src="<%= clothe['image'] %>">
+                </a>
+            </div>
+        <% end %>
+    <% else %>
+        <p>No Clothes Found</p>
     <% end %>
     <div class="card">
-    <p>Page:<%=@page%></p>
-        <a href="/clothes?page=<%=@page.to_i + 1%>">Next Page</a>
+        <p>Page:<%=@page%></p>
+        <a href="/clothes?page=<%= @page.to_i + 1 %>">Next Page</a>
     </div>
-<% else %>
-    <p>No Clothes Found</p>
-<% end %>
 </div>

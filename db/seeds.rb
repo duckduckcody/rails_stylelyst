@@ -1,9 +1,3 @@
-# TODO:
-#  - more website and urls
-#  - search function
-#  - cleaner frontend
-#  - user accounts and user favorites
-
 # genders
 @male = Gender.create!(name: 'Male')
 @female = Gender.create!(name: 'Female')
@@ -35,16 +29,18 @@
 @ck_website.website_url_htmls.create!(url_extension: '/collections/womens-tops-jacket', website_url_function: @url_function_page, category: @female_jackets, scraper_html: @ck_html_scraper)
 
 # the iconic html scraper
-@iconic_html_scraper = ScraperHtml.new(container_selector: 'div.product')
+@iconic_html_scraper = ScraperHtml.new(container_selector: 'div.product.columns')
 @iconic_html_scraper.scraper_html_component_texts.new(name: 'name', selector: 'span.name')
 @iconic_html_scraper.scraper_html_component_prices.new(name: 'price', selector: 'span.price')
 @iconic_html_scraper.scraper_html_component_images.new(name: 'image', selector: 'span.image-frame')
 @iconic_html_scraper.scraper_html_component_links.new(name: 'link', selector: 'a.product-details')
 # the iconic website and urls
 @ck_website = Website.create!(name: 'The Iconic', url: 'https://www.theiconic.com.au', query_string_key_page: 'page', query_string_key_search: 'q')
-@ck_website.website_url_htmls.create!(url_extension: '/mens-clothing-tops/', website_url_function: @url_function_page, category: @male_tops, scraper_html: @iconic_html_scraper)
-@ck_website.website_url_htmls.create!(url_extension: '/mens-clothing-pants/', website_url_function: @url_function_page, category: @male_bottoms, scraper_html: @iconic_html_scraper)
-@ck_website.website_url_htmls.create!(url_extension: '/mens-clothing-coats-jackets/', website_url_function: @url_function_page, category: @male_jackets, scraper_html: @iconic_html_scraper)
-@ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-tops/', website_url_function: @url_function_page, category: @female_tops, scraper_html: @iconic_html_scraper)
-@ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-pants/', website_url_function: @url_function_page, category: @female_bottoms, scraper_html: @iconic_html_scraper)
-@ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-coats-jackets/', website_url_function: @url_function_page, category: @female_jackets, scraper_html: @iconic_html_scraper)
+@ck_website.website_url_htmls.create!(url_extension: '/mens-clothing-tops', website_url_function: @url_function_page, category: @male_tops, scraper_html: @iconic_html_scraper)
+@ck_website.website_url_htmls.create!(url_extension: '/mens-clothing-pants', website_url_function: @url_function_page, category: @male_bottoms, scraper_html: @iconic_html_scraper)
+@ck_website.website_url_htmls.create!(url_extension: '/mens-clothing-coats-jackets', website_url_function: @url_function_page, category: @male_jackets, scraper_html: @iconic_html_scraper)
+@ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-tops', website_url_function: @url_function_page, category: @female_tops, scraper_html: @iconic_html_scraper)
+@ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-pants', website_url_function: @url_function_page, category: @female_bottoms, scraper_html: @iconic_html_scraper)
+@ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-coats-jackets', website_url_function: @url_function_page, category: @female_jackets, scraper_html: @iconic_html_scraper)
+@ck_website.website_url_htmls.create!(url_extension: '/catalog/', website_url_function: @url_function_search, scraper_html: @iconic_html_scraper)
+

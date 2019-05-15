@@ -1,3 +1,4 @@
 node_modules/
 tmp/
 /log/*.log
+/db/*.sqlite3

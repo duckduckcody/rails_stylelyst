@@ -4,6 +4,7 @@ document.addEventListener('turbolinks:load', function() {
             el: '#settingsForm',
             data: {
                 formData: {},
+                formErrors: [],
                 genders: [],
                 categories: [],
                 websites: []
@@ -20,11 +21,23 @@ document.addEventListener('turbolinks:load', function() {
                     this.formData.category = null;
                 },
                 clickFormSubmit: function() {
-                    var path = ';path=/'
-                    document.cookie = "gender=" + this.formData.gender + path;
-                    document.cookie = "category=" + this.formData.category + path;
-                    document.cookie = "websites=" + encodeURIComponent(JSON.stringify(this.formData.websites)) + path;
-                    window.location = "/clothes";
+                    if (this.formIsValid()) {
+                        var path = ';path=/'
+                        document.cookie = "gender=" + this.formData.gender + path;
+                        document.cookie = "category=" + this.formData.category + path;
+                        document.cookie = "websites=" + encodeURIComponent(JSON.stringify(this.formData.websites)) + path;
+                        window.location = "/clothes";   
+                    }
+                },
+                formIsValid: function() {
+                    if (this.formData.gender && this.formData.category) {
+                        return true;
+                    }
+
+                    this.formErrors = [];
+                    !this.formData.gender ? this.formErrors.push('Gender required') : ''
+                    !this.formData.category ? this.formErrors.push('Category required') : ''
+                    !this.formData.websites ? this.formErrors.push('Atleast one website is required') : ''
                 },
                 parseCookies: function() {
                     return document.cookie

@@ -23,7 +23,7 @@ class ClothesControllerTest < ActionDispatch::IntegrationTest
       genders.each do |gender|
         websites.each do |website|
           user_settings = {gender: gender[:id], category: category[:id]}
-          # can't find website_url object when scraping website
+          # TODO: can't find website_url object when scraping website
           clothes = website.scrape(user_settings, {page: '1'}, url_function)
           assert_not_empty clothes, "#{website_temp[:name]} didn't return any clothes"
         end

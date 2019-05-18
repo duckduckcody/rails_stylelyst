@@ -1,4 +1,8 @@
 $header-height: 60px;
+$phone: 576px;
+$tablets: 768px;
+$desktops: 992px;
+$large-desktops: 1200px;
 
 .header {
     display: flex;
@@ -25,6 +29,9 @@ $header-height: 60px;
     .card {
         flex: 0 0 25%;
         border: 1px black solid;
+        @media screen and (max-width: $phone) {
+            flex: 0 0 33%;
+        }
         .info-container {
             display: flex;
             flex-direction: column;

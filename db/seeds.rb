@@ -1,3 +1,7 @@
+
+# scrape discount prices for iconic
+# add clearance pages
+
 # url functions
 @url_function_search = WebsiteUrlFunction.create!(name: 'search')
 @url_function_page = WebsiteUrlFunction.create!(name: 'page')
@@ -18,7 +22,8 @@
 # culture kings html scraper
 @ck_html_scraper = ScraperHtml.new(container_selector: 'div.product-card')
 @ck_html_scraper.scraper_html_component_texts.new(name: 'name', selector: 'p.product-title')
-@ck_html_scraper.scraper_html_component_prices.new(name: 'price', selector: 'span.money')
+@ck_html_scraper.scraper_html_component_prices.new(name: 'price', selector: 'span.product-price')
+@ck_html_scraper.scraper_html_component_prices.new(name: 'old-price', selector: 'span.product-compare-price')
 @ck_html_scraper.scraper_html_component_images.new(name: 'image', selector: 'div.product-card__image')
 @ck_html_scraper.scraper_html_component_links.new(name: 'link', selector: 'a.product-card__link')
 # culture kings website and urls

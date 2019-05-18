@@ -10,7 +10,7 @@
     <% if @clothes.present? %>
         <% @clothes.each do |clothe| %>
             <div class="card">
-                <p><%= clothe['name'] %> <%= clothe['price'] %></p>
+                <p><%= clothe['name'] %> $<%= clothe['price'] %>. Was $<%= clothe['old-price']%></p>
                 <a href="<%= clothe['link'] %>" target="_blank">
                     <img class="lazy" data-src="<%= clothe['image'] %>">
                 </a>

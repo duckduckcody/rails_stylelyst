@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ScraperSearchTest < ActiveSupport::TestCase
+class ScraperHtmlTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

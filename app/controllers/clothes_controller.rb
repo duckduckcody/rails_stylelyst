@@ -1,7 +1,7 @@
 class ClothesController < ApplicationController
   def index
     params[:page] = (params[:page] ||= '1')
-    @page = params[:page] # this is used for page nav. TODO: move this into javascript
+    @page = params[:page].to_i # this is used for page nav. TODO: move this into javascript
     @clothes = []
     @url_function = WebsiteUrlFunction.find_by(name: 'page')
     @user_settings = UserSettingsService.call(cookies)

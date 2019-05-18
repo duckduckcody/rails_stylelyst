@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class WebsiteUrlTest < ActiveSupport::TestCase
+class ScraperHtmlComponentImageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

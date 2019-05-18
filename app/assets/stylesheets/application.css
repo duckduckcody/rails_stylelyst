@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+ .line-through {
+     text-decoration: line-through;
+ }

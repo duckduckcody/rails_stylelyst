@@ -18,7 +18,7 @@ class WebsiteUrlHtml < ApplicationRecord
 
   def scrape(params)
     @url = generate_url(params)
-    Rails.cache.fetch(@url, expires_in: 24.hours) do
+    Rails.cache.fetch(@url, expires_in: 10.minutes) do
       @html = Nokogiri::HTML(open(@url))
       self.scraper_html.scrape(@html, self.website.url)
     end

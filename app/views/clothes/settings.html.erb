@@ -1,4 +1,3 @@
-<a href="/clothes">Clothes</a>
 <h1>Settings</h1>
 
 <form id="settingsForm" data-genders="<%= @genders.to_json %>" data-categories="<%= @categories.to_json %>" data-websites="<%= @websites.to_json%>">
@@ -30,7 +29,7 @@
     </div>
     
     <div style="margin-top:15px">
-        <button @click="clickFormSubmit" type="button" id="form-submit-button">Submit</button>
+        <button @click="clickFormSubmit" type="button" id="form-submit-button">Save</button>
         <a href="/clothes">Cancel</a>
     </div>
 </form>

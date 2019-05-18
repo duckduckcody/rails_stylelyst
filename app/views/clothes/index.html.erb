@@ -1,26 +1,36 @@
-<a href="/clothes/settings">Settings</a>
-<h1>Clothes</h1>
-<!--
-<form action="/clothes/search">
-    <input type="text" class="search" name="query" placeholder="search for clothes" />
-    <button type="submit">Search</button>
-</form>
--->
+<div class="header">
+    <h1>Stylelyst</h1>
+    <span>Page: <%= @page %></span>
+    <a href="?page=<%= @page + 1 %>">Next Page</a>
+    <% if @page > 1 %>
+        <a href="?page=<%=@page - 1%>">Previous Page</a>
+    <% end %>
+    <a href="/clothes/settings">Settings</a>
+</div>
 <div class="card-container">
     <% if @clothes.present? %>
         <% @clothes.each do |clothe| %>
             <div class="card">
-                <p><%= clothe['name'] %> $<%= clothe['price'] %>. Was $<%= clothe['old-price']%></p>
+                <div class="info-container">
+                    <p>
+                        <%= clothe['name'] %> 
+                    </p>
+                    <p>
+                        <%= number_to_currency(clothe['price']) %>
+                        <% if clothe['old-price'] != nil && clothe['old-price'] != 0.0%>
+                            <span class="line-through">
+                                <%= number_to_currency(clothe['old-price'])%>
+                            </span>
+                            (<%= number_to_percentage((((clothe['old-price'] - clothe['price'])/clothe['old-price']) * 100) , precision: 0) %> off)
+                        <% end %>
+                    </p>
+                </div>
                 <a href="<%= clothe['link'] %>" target="_blank">
-                    <img class="lazy" data-src="<%= clothe['image'] %>">
+                    <img class="lazy image" data-src="<%= clothe['image'] %>">
                 </a>
             </div>
         <% end %>
     <% else %>
         <p>No Clothes Found</p>
     <% end %>
-    <div class="card">
-        <p>Page:<%=@page%></p>
-        <a href="/clothes?page=<%= @page.to_i + 1 %>">Next Page</a>
-    </div>
 </div>

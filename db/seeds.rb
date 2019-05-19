@@ -12,6 +12,7 @@
 @male_clearance = Category.create!(name: 'Clearance', gender: @male)
 
 @female_tops = Category.create!(name: 'All Tops', gender: @female)
+@female_dresses = Category.create!(name: 'Dresses', gender: @female)
 @female_bottoms = Category.create!(name: 'All Bottoms', gender: @female)
 @female_jackets = Category.create!(name: 'Jackets', gender: @female)
 @female_hoodies = Category.create!(name: 'Hoodies', gender: @female)
@@ -33,6 +34,7 @@
 @ck_website.website_url_htmls.create!(url_extension: '/collections/markdowns/gender-mens', website_url_function: @url_function_page, category: @male_clearance, scraper_html: @ck_html_scraper)
 
 @ck_website.website_url_htmls.create!(url_extension: '/collections/womens-tops', website_url_function: @url_function_page, category: @female_tops, scraper_html: @ck_html_scraper)
+@ck_website.website_url_htmls.create!(url_extension: '/collections/womens-tops-dress', website_url_function: @url_function_page, category: @female_dresses, scraper_html: @ck_html_scraper)
 @ck_website.website_url_htmls.create!(url_extension: '/collections/womens-bottoms', website_url_function: @url_function_page, category: @female_bottoms, scraper_html: @ck_html_scraper)
 @ck_website.website_url_htmls.create!(url_extension: '/collections/womens-tops-jacket', website_url_function: @url_function_page, category: @female_jackets, scraper_html: @ck_html_scraper)
 @ck_website.website_url_htmls.create!(url_extension: '/collections/womens-tops-hood', website_url_function: @url_function_page, category: @female_hoodies, scraper_html: @ck_html_scraper)
@@ -53,6 +55,7 @@
 @ck_website.website_url_htmls.create!(url_extension: '/mens-sale', website_url_function: @url_function_page, category: @male_clearance, scraper_html: @iconic_html_scraper)
 
 @ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-tops', website_url_function: @url_function_page, category: @female_tops, scraper_html: @iconic_html_scraper)
+@ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-dresses', website_url_function: @url_function_page, category: @female_dresses, scraper_html: @iconic_html_scraper)
 @ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-pants', website_url_function: @url_function_page, category: @female_bottoms, scraper_html: @iconic_html_scraper)
 @ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-coats-jackets', website_url_function: @url_function_page, category: @female_jackets, scraper_html: @iconic_html_scraper)
 @ck_website.website_url_htmls.create!(url_extension: '/womens-clothing-sweats-hoodies', website_url_function: @url_function_page, category: @female_hoodies, scraper_html: @iconic_html_scraper)

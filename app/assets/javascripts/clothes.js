@@ -10,6 +10,20 @@ document.addEventListener('turbolinks:load', function() {
                 websites: []
             },
             created() {
+                let request = new Request(
+                    '/clothes/website_match',
+                    {
+                        method: 'POST',
+                        headers: new Headers({
+                            'Content-Type': 'application/json'
+                        })
+                    }
+                )
+                fetch(request)
+                .then((res) => {
+                    console.log(res)
+                })
+
                 var settingsForm = document.getElementById('settingsForm')
                 this.genders = JSON.parse(settingsForm.dataset.genders)
                 this.categories = JSON.parse(settingsForm.dataset.categories)

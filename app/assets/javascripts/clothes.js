@@ -3,36 +3,63 @@ document.addEventListener('turbolinks:load', function() {
         new Vue({
             el: '#settingsForm',
             data: {
-                formData: {},
+                formData: {
+                    gender: '',
+                    category: '',
+                    websites: []
+                },
                 formErrors: [],
                 genders: [],
                 categories: [],
                 websites: []
             },
+            computed: {
+                selectedCategory() {
+                    return this.formData.category
+                }
+            },
+            watch: {
+                selectedCategory() {
+                    this.fetchWebsites()
+                }
+            },
             created() {
-                let request = new Request(
-                    '/clothes/website_match',
-                    {
-                        method: 'POST',
-                        headers: new Headers({
-                            'Content-Type': 'application/json'
-                        })
-                    }
-                )
-                fetch(request)
-                .then((res) => {
-                    console.log(res)
-                })
-
                 var settingsForm = document.getElementById('settingsForm')
                 this.genders = JSON.parse(settingsForm.dataset.genders)
                 this.categories = JSON.parse(settingsForm.dataset.categories)
-                this.websites = JSON.parse(settingsForm.dataset.websites)
                 this.formData = this.parseCookies()
+                this.fetchWebsites()
             },
             methods: {
                 clickGender: function() {
                     this.formData.category = null;
+                    this.websites = []
+                },
+                fetchWebsites: function() {
+                    let request = new Request(
+                        '/clothes/website_match',
+                        {
+                            method: 'POST',
+                            body: JSON.stringify({'category': this.formData.category}),
+                            headers: new Headers({
+                                'Content-Type': 'application/json'
+                            })
+                        }
+                    )
+                    fetch(request)
+                    .then((res) => res.json())
+                    .then((json) => {                       
+                        this.websites = json.websites
+                        this.fillWebsites()
+                    })
+                },
+                fillWebsites: function() {
+                    var self = this
+                    var websiteCopy = self.formData.websites
+                    self.formData.websites = []
+                    _.forEach(websiteCopy, function(websiteId) {
+                        _.some(self.websites, ['id', websiteId]) ? self.formData.websites.push(websiteId) : ''
+                    })
                 },
                 clickFormSubmit: function() {
                     if (this.formIsValid()) {
@@ -40,18 +67,18 @@ document.addEventListener('turbolinks:load', function() {
                         document.cookie = "gender=" + this.formData.gender + path;
                         document.cookie = "category=" + this.formData.category + path;
                         document.cookie = "websites=" + encodeURIComponent(JSON.stringify(this.formData.websites)) + path;
-                        window.location = "/clothes";   
+                        window.location = "/";   
                     }
                 },
                 formIsValid: function() {
-                    if (this.formData.gender && this.formData.category) {
+                    if (this.formData.gender && this.formData.category && this.formData.websites.length) {
                         return true;
                     }
 
                     this.formErrors = [];
                     !this.formData.gender ? this.formErrors.push('Gender required') : ''
                     !this.formData.category ? this.formErrors.push('Category required') : ''
-                    !this.formData.websites ? this.formErrors.push('Atleast one website is required') : ''
+                    !this.formData.websites.length ? this.formErrors.push('At least one website is required') : ''
                 },
                 parseCookies: function() {
                     return document.cookie

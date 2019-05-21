@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    protect_from_forgery unless: -> { request.format.json? || request.format.xml? }
     before_action :set_raven_context
 
     private

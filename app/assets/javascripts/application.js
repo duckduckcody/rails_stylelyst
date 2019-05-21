@@ -14,5 +14,6 @@
 //= require activestorage
 //= require turbolinks
 //= require vue/dist/vue.js
-//= require vanilla-lazyload/dist/lazyload.js
+//= require vanilla-lazyload/dist/lazyload.min.js
+//= require lodash/lodash.min.js 
 //= require_tree .

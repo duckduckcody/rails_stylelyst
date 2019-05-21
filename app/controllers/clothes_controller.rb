@@ -19,7 +19,9 @@ class ClothesController < ApplicationController
   end
 
   def website_match
-    puts params
-    render :json => {:msg => 'Hello!'}
+    websites = WebsiteUrlHtml.where(category: params[:category]).map{ |category|
+      category.website
+    }
+    render :json => {'websites': websites}
   end
 end

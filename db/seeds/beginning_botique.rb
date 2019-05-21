@@ -1,0 +1,12 @@
+beginning_boutique_scraper = ScraperHtml.new(container_selector: 'div.product-card')
+beginning_boutique_scraper.scraper_html_component_texts.new(name: 'name', selector: 'p.product-title')
+beginning_boutique_scraper.scraper_html_component_prices.new(name: 'price', selector: 'span.product-price--on-sale,span.money')
+beginning_boutique_scraper.scraper_html_component_prices.new(name: 'old-price', selector: 'span.strike--red')
+beginning_boutique_scraper.scraper_html_component_images.new(name: 'image', selector: 'div.product-card__image-wrapper')
+beginning_boutique_scraper.scraper_html_component_links.new(name: 'link', selector: 'a.product-card-image-wrapper')
+
+bb_website = Website.create!(name: 'Beginning Boutique', url: 'https://www.beginningboutique.com.au', query_string_key_page: 'page', query_string_key_search: 'q')
+bb_website.website_url_htmls.create!(url_extension: '/collections/tops', category: @female_tops, scraper_html: beginning_boutique_scraper, website_url_function: @url_function_page)
+bb_website.website_url_htmls.create!(url_extension: '/collections/dresses', category: @female_dresses, scraper_html: beginning_boutique_scraper, website_url_function: @url_function_page)
+bb_website.website_url_htmls.create!(url_extension: '/collections/festival-outfits', category: @female_festival, scraper_html: beginning_boutique_scraper, website_url_function: @url_function_page)
+bb_website.website_url_htmls.create!(url_extension: '/collections/sale', category: @female_clearance, scraper_html: beginning_boutique_scraper, website_url_function: @url_function_page)

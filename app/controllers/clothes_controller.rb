@@ -19,9 +19,10 @@ class ClothesController < ApplicationController
   end
 
   def website_match
-    websites = WebsiteUrlHtml.where(category: params[:category]).map{ |category|
-      category.website
-    }
+    websites = WebsiteUrlHtml
+      .where(category: params[:category])
+      .map{ |category| category.website }
+      .sort_by { |website| website.name }
     render :json => {'websites': websites}
   end
 end

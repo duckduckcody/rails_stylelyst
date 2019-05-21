@@ -43,7 +43,8 @@
 # the iconic html scraper
 @iconic_html_scraper = ScraperHtml.new(container_selector: 'div.product.columns')
 @iconic_html_scraper.scraper_html_component_texts.new(name: 'name', selector: 'span.name')
-@iconic_html_scraper.scraper_html_component_prices.new(name: 'price', selector: 'span.price')
+@iconic_html_scraper.scraper_html_component_prices.new(name: 'price', selector: 'span.new-price,span.price')
+@iconic_html_scraper.scraper_html_component_prices.new(name: 'old-price', selector: 'span.old-price')
 @iconic_html_scraper.scraper_html_component_images.new(name: 'image', selector: 'span.image-frame')
 @iconic_html_scraper.scraper_html_component_links.new(name: 'link', selector: 'a.product-details')
 # the iconic website and urls

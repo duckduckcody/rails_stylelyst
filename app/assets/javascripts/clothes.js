@@ -4,8 +4,8 @@ document.addEventListener('turbolinks:load', function() {
             el: '#settingsForm',
             data: {
                 formData: {
-                    gender: '',
-                    category: '',
+                    gender: undefined,
+                    category: undefined,
                     websites: []
                 },
                 formErrors: [],
@@ -14,12 +14,18 @@ document.addEventListener('turbolinks:load', function() {
                 websites: []
             },
             computed: {
+                matchedCategories() {
+                    return _.filter(this.categories, function(category) {
+                        return category.gender_id == this.formData.gender
+                    }.bind(this))
+                },
                 selectedCategory() {
                     return this.formData.category
                 }
             },
             watch: {
                 selectedCategory() {
+                    console.log('selectedCategory')
                     this.fetchWebsites()
                 }
             },
@@ -27,8 +33,12 @@ document.addEventListener('turbolinks:load', function() {
                 var settingsForm = document.getElementById('settingsForm')
                 this.genders = JSON.parse(settingsForm.dataset.genders)
                 this.categories = JSON.parse(settingsForm.dataset.categories)
-                this.formData = this.parseCookies()
-                this.fetchWebsites()
+
+                // no longer filling
+
+                this.formData.category =  Cookies.get('category')
+                this.formData.gender = Cookies.get('gender')
+                this.formData.websites = Cookies.get('websites')
             },
             methods: {
                 clickGender: function() {
@@ -56,6 +66,8 @@ document.addEventListener('turbolinks:load', function() {
                 fillWebsites: function() {
                     var self = this
                     var websiteCopy = self.formData.websites
+                    console.log(self.websites)
+                    console.log(websiteCopy)
                     self.formData.websites = []
                     _.forEach(websiteCopy, function(websiteId) {
                         _.some(self.websites, ['id', websiteId]) ? self.formData.websites.push(websiteId) : ''
@@ -63,10 +75,9 @@ document.addEventListener('turbolinks:load', function() {
                 },
                 clickFormSubmit: function() {
                     if (this.formIsValid()) {
-                        var path = ';path=/'
-                        document.cookie = "gender=" + this.formData.gender + path;
-                        document.cookie = "category=" + this.formData.category + path;
-                        document.cookie = "websites=" + encodeURIComponent(JSON.stringify(this.formData.websites)) + path;
+                        Cookies.set('gender', this.formData.gender)
+                        Cookies.set('category', this.formData.category)
+                        Cookies.set('websites', JSON.stringify(this.formData.websites))
                         window.location = "/";   
                     }
                 },
@@ -79,23 +90,6 @@ document.addEventListener('turbolinks:load', function() {
                     !this.formData.gender ? this.formErrors.push('Gender required') : ''
                     !this.formData.category ? this.formErrors.push('Category required') : ''
                     !this.formData.websites.length ? this.formErrors.push('At least one website is required') : ''
-                },
-                parseCookies: function() {
-                    return document.cookie
-                        .split(';')
-                        .reduce((res, c) => {
-                            const [key, val] = c.trim().split('=').map(decodeURIComponent)
-                            const allNumbers = str => /^\d+$/.test(str);
-                            try {
-                                return Object.assign(res, {
-                                    [key]: allNumbers(val) ? val : JSON.parse(val)
-                                })
-                            } catch (e) {
-                                return Object.assign(res, {
-                                    [key]: val
-                                })
-                            }
-                        }, {});
                 }
             }
         })

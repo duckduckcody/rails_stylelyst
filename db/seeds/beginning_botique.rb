@@ -1,5 +1,6 @@
 beginning_boutique_scraper = ScraperHtml.new(container_selector: 'div.product-card')
 beginning_boutique_scraper.scraper_html_component_texts.new(name: 'name', selector: 'p.product-title')
+beginning_boutique_scraper.scraper_html_component_texts.new(name: 'sizzle-text', selector: 'div.product-promo-block')
 beginning_boutique_scraper.scraper_html_component_prices.new(name: 'price', selector: 'span.product-price--on-sale,span.money')
 beginning_boutique_scraper.scraper_html_component_prices.new(name: 'old-price', selector: 'span.strike--red')
 beginning_boutique_scraper.scraper_html_component_images.new(name: 'image', selector: 'div.product-card__image-wrapper')

@@ -33,12 +33,9 @@ document.addEventListener('turbolinks:load', function() {
                 var settingsForm = document.getElementById('settingsForm')
                 this.genders = JSON.parse(settingsForm.dataset.genders)
                 this.categories = JSON.parse(settingsForm.dataset.categories)
-
-                // no longer filling
-
                 this.formData.category =  Cookies.get('category')
                 this.formData.gender = Cookies.get('gender')
-                this.formData.websites = Cookies.get('websites')
+                this.formData.websites = Cookies.getJSON('websites')
             },
             methods: {
                 clickGender: function() {
@@ -66,8 +63,6 @@ document.addEventListener('turbolinks:load', function() {
                 fillWebsites: function() {
                     var self = this
                     var websiteCopy = self.formData.websites
-                    console.log(self.websites)
-                    console.log(websiteCopy)
                     self.formData.websites = []
                     _.forEach(websiteCopy, function(websiteId) {
                         _.some(self.websites, ['id', websiteId]) ? self.formData.websites.push(websiteId) : ''
@@ -77,7 +72,7 @@ document.addEventListener('turbolinks:load', function() {
                     if (this.formIsValid()) {
                         Cookies.set('gender', this.formData.gender)
                         Cookies.set('category', this.formData.category)
-                        Cookies.set('websites', JSON.stringify(this.formData.websites))
+                        Cookies.set('websites', this.formData.websites)
                         window.location = "/";   
                     }
                 },

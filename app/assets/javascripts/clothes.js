@@ -70,10 +70,11 @@ document.addEventListener('turbolinks:load', function() {
                 },
                 clickFormSubmit: function() {
                     if (this.formIsValid()) {
-                        Cookies.set('gender', this.formData.gender)
-                        Cookies.set('category', this.formData.category)
-                        Cookies.set('websites', this.formData.websites)
-                        window.location = "/";   
+                        var options = { expires: 365 }
+                        Cookies.set('gender', this.formData.gender, options)
+                        Cookies.set('category', this.formData.category, options)
+                        Cookies.set('websites', this.formData.websites, options)
+                        window.location = "/";
                     }
                 },
                 formIsValid: function() {

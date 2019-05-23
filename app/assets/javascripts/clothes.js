@@ -25,7 +25,6 @@ document.addEventListener('turbolinks:load', function() {
             },
             watch: {
                 selectedCategory() {
-                    console.log('selectedCategory')
                     this.fetchWebsites()
                 }
             },
@@ -61,12 +60,11 @@ document.addEventListener('turbolinks:load', function() {
                     })
                 },
                 fillWebsites: function() {
-                    var self = this
-                    var websiteCopy = self.formData.websites
-                    self.formData.websites = []
+                    var websiteCopy = this.formData.websites
+                    this.formData.websites = []
                     _.forEach(websiteCopy, function(websiteId) {
-                        _.some(self.websites, ['id', websiteId]) ? self.formData.websites.push(websiteId) : ''
-                    })
+                        _.some(this.websites, ['id', websiteId]) ? this.formData.websites.push(websiteId) : ''
+                    }.bind(this))
                 },
                 clickFormSubmit: function() {
                     if (this.formIsValid()) {

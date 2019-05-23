@@ -24,12 +24,22 @@
                             (<%= number_to_percentage((((clothe['old-price'] - clothe['price'])/clothe['old-price']) * 100) , precision: 0) %> off)
                         <% end %>
                     </p>
+                    <% if clothe['sizzle-text'].present? %>
+                        <p>
+                            <%= clothe['sizzle-text']%>
+                        </p>
+                    <% end %>
                 </div>
                 <a href="<%= clothe['link'] %>" target="_blank">
                     <img class="lazy image" data-src="<%= clothe['image'] %>">
                 </a>
             </div>
         <% end %>
+    <% elsif @page > 1 %>
+        <div class="empty-message"> 
+            <p>There isn't anymore styles in this list.</p>
+            <p>Click previous page to go back or click settings to select a new style.</p>
+        </div>
     <% else %>
         <div class="empty-message"> 
             <p>This list has no styles.</p>

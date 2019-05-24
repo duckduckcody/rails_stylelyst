@@ -18,6 +18,26 @@
     box-sizing: border-box;
 }
 
- .line-through {
-     text-decoration: line-through;
- }
+body {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.line-through {
+    text-decoration: line-through;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.uppercase {
+    text-transform: uppercase
+}
+
+.font-weight-light {
+    font-weight: 200;
+}

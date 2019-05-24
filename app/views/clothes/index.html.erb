@@ -7,15 +7,25 @@
     <% end %>
     <a href="/clothes/settings">Settings</a>
 </div>
-<div class="card-container">
+<div class="cards-container">
     <% if @clothes.present? %>
         <% @clothes.each do |clothe| %>
             <div class="card">
-                <div class="info-container">
-                    <p>
-                        <%= clothe['name'] %> 
+                <div class="card-image-container">
+                    <a href="<%= clothe['link'] %>" target="_blank">
+                        <img class="lazy card-image" data-src="<%= clothe['image'] %>">
+                    </a>
+                </div>
+                <div class="card-info-container">
+                    <% if clothe['brand'].present? %>
+                        <p class="card-brand uppercase font-weight-light">
+                            <%= clothe['brand']%>
+                        </p>
+                    <% end %>
+                    <p class="card-name capitalize">
+                        <b><%= clothe['name'] %></b>
                     </p>
-                    <p>
+                    <p class="card-price">
                         <%= number_to_currency(clothe['price']) %>
                         <% if clothe['old-price'] != nil && clothe['old-price'] != 0.0%>
                             <span class="line-through">
@@ -30,9 +40,6 @@
                         </p>
                     <% end %>
                 </div>
-                <a href="<%= clothe['link'] %>" target="_blank">
-                    <img class="lazy image" data-src="<%= clothe['image'] %>">
-                </a>
             </div>
         <% end %>
     <% elsif @page > 1 %>

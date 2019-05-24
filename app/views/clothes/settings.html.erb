@@ -1,6 +1,6 @@
-<h1>Settings</h1>
-
-<form id="settingsForm" data-genders="<%= @genders.to_json %>" data-categories="<%= @categories.to_json %>" data-websites="<%= @websites.to_json%>">
+<form id="settingsForm" class="settings-form" data-genders="<%= @genders.to_json %>" data-categories="<%= @categories.to_json %>">
+    <h1>Settings</h1>
+    
     <h3>Gender</h3>
     <label class="radio" v-for="gender in genders">
         <input type="radio" name="gender" :value="gender.id" v-model="formData.gender" @click="clickGender" />
@@ -8,15 +8,21 @@
     </label>
 
     <h3>Category</h3>
-    <label class="radio" v-for="category in categories" v-if="category.gender_id == formData.gender">
+    <label class="radio" v-for="category in matchedCategories">
         <input type="radio" name="category" :value="category.id" v-model="formData.category"/>
         {{ category.name }}
     </label>
+    <div v-if="!matchedCategories.length">
+        Please select a gender
+    </div>
     
     <h3>Website</h3>
-    <div v-for="website in websites">
+    <div v-for="website in websites" :key="website.id">
         <input type="checkbox" :id="website.id" :value="website.id" v-model="formData.websites" >
         <label :for="website.id">{{ website.name }}</label>
+    </div>
+    <div v-if="!websites.length">
+        Please select a gender and category
     </div>
 
     <div v-if="formErrors.length">

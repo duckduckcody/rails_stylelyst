@@ -1,10 +1,9 @@
 class UserSettingsService < ApplicationService
   def initialize(cookies)
-    cookies[:websites] ||= "[1]"
     @user_settings = {
-      :gender_id => (cookies[:gender] ||= "1"),
-      :category_id => (cookies[:category] ||= "1"),
-      :website_ids => JSON.parse(cookies[:websites])
+      :gender_id => cookies[:gender],
+      :category_id => cookies[:category],
+      :website_ids => cookies[:websites] ? JSON.parse(cookies[:websites]) : []
     }
   end
 

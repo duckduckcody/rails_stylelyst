@@ -7,15 +7,25 @@
     <% end %>
     <a href="/clothes/settings">Settings</a>
 </div>
-<div class="card-container">
+<div class="cards-container">
     <% if @clothes.present? %>
         <% @clothes.each do |clothe| %>
             <div class="card">
-                <div class="info-container">
-                    <p>
-                        <%= clothe['name'] %> 
+                <div class="card-image-container">
+                    <a href="<%= clothe['link'] %>" target="_blank">
+                        <img class="lazy card-image" data-src="<%= clothe['image'] %>">
+                    </a>
+                </div>
+                <div class="card-info-container">
+                    <% if clothe['brand'].present? %>
+                        <p class="card-brand uppercase font-weight-light">
+                            <%= clothe['brand']%>
+                        </p>
+                    <% end %>
+                    <p class="card-name capitalize">
+                        <b><%= clothe['name'] %></b>
                     </p>
-                    <p>
+                    <p class="card-price">
                         <%= number_to_currency(clothe['price']) %>
                         <% if clothe['old-price'] != nil && clothe['old-price'] != 0.0%>
                             <span class="line-through">
@@ -24,13 +34,23 @@
                             (<%= number_to_percentage((((clothe['old-price'] - clothe['price'])/clothe['old-price']) * 100) , precision: 0) %> off)
                         <% end %>
                     </p>
+                    <% if clothe['sizzle-text'].present? %>
+                        <p>
+                            <%= clothe['sizzle-text']%>
+                        </p>
+                    <% end %>
                 </div>
-                <a href="<%= clothe['link'] %>" target="_blank">
-                    <img class="lazy image" data-src="<%= clothe['image'] %>">
-                </a>
             </div>
         <% end %>
+    <% elsif @page > 1 %>
+        <div class="empty-message"> 
+            <p>There isn't anymore styles in this list.</p>
+            <p>Click previous page to go back or click settings to select a new style.</p>
+        </div>
     <% else %>
-        <p>No Clothes Found</p>
+        <div class="empty-message"> 
+            <p>This list has no styles.</p>
+            <p>Click settings to select what styles you would like.</p>
+        </div>
     <% end %>
 </div>

@@ -1,11 +1,11 @@
 <div class="header">
-    <h1>Stylelyst</h1>
-    <span>Page: <%= @page %></span>
-    <a href="?page=<%= @page + 1 %>">Next Page</a>
+    <h1 class="header-brand">Stylelyst</h1>
+    <span class="header-page">Page: <%= @page %></span>
+    <a class="header-next-page header-link" href="?page=<%= @page + 1 %>">Next Page</a>
     <% if @page > 1 %>
-        <a href="?page=<%=@page - 1%>">Previous Page</a>
+        <a class="header-previous-page header-link" href="?page=<%=@page - 1%>">Previous Page</a>
     <% end %>
-    <a href="/clothes/settings">Settings</a>
+    <a class="header-settings header-link" href="/clothes/settings">Settings</a>
 </div>
 <div class="cards-container">
     <% if @clothes.present? %>

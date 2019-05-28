@@ -11,16 +11,30 @@ document.addEventListener('turbolinks:load', function() {
                 formErrors: [],
                 genders: [],
                 categories: [],
-                websites: []
+                websites: [],
+                categorySearchBoxQuery: "",
+                websiteSearchBoxQuery: ""
             },
             computed: {
                 matchedCategories() {
                     return _.filter(this.categories, function(category) {
-                        return category.gender_id == this.formData.gender
+                        var searchFlag = true;
+                        if (this.categorySearchBoxQuery) {
+                            searchFlag =  category.name.toLowerCase().indexOf(this.categorySearchBoxQuery.toLowerCase()) !== -1
+                        }
+                        return category.gender_id == this.formData.gender && searchFlag
                     }.bind(this))
                 },
                 selectedCategory() {
                     return this.formData.category
+                },
+                filteredWebsites() {
+                    if (this.websiteSearchBoxQuery) {
+                        return _.filter(this.websites, function(website) {
+                            return website.name.toLowerCase().indexOf(this.websiteSearchBoxQuery.toLowerCase()) !== -1
+                        }.bind(this))
+                    }
+                    return this.websites
                 }
             },
             watch: {

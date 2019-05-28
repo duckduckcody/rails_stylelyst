@@ -84,5 +84,31 @@ $large-desktop: 1200px;
 }
 
 .settings-form {
-    padding: 0 0 0 25px;
+    padding: 0 25px;
+    .search-box-container {
+        display: flex;
+        margin: 20px 0;
+        .search-box {
+            flex: 1 1 75%;
+            text-align: center;
+            padding: 10px 10px;
+        }
+        .search-clear-button {
+            flex: 0 0 10%;
+        }
+    }
+   
+    .settings-category-radio-container {
+        display: flex;
+        flex-flow: row wrap;
+        .settings-category-radio {
+            flex: 0 0 25%;
+            @media screen and (min-width: $phone) and (max-width: $tablet) {
+                flex: 0 0 50%;
+            }
+            @media screen and (max-width: $phone) {
+                flex: 0 0 100%;
+            }  
+        }
+    }
 }

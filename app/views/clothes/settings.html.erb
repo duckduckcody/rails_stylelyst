@@ -8,21 +8,49 @@
     </label>
 
     <h3>Category</h3>
-    <label class="radio" v-for="category in matchedCategories">
-        <input type="radio" name="category" :value="category.id" v-model="formData.category"/>
-        {{ category.name }}
-    </label>
-    <div v-if="!matchedCategories.length">
-        Please select a gender
+    <!-- 
+    <div class="search-box-container">
+        <input class="search-box" type="text" name="search-category" id="search-category" placeholder="Search for a category"
+            v-model="categorySearchBoxQuery"
+         />
+         <button class="search-clear-button" type="button" @click="categorySearchBoxQuery=''">
+            Clear
+        </button>
+    </div>
+    -->
+    <div class="settings-category-radio-container">
+        <label class="settings-category-radio radio" v-for="category in matchedCategories">
+            <input type="radio" name="category" :value="category.id" v-model="formData.category"/>
+            {{ category.name }}
+        </label>
+        <div v-if="!matchedCategories.length && !categorySearchBoxQuery">
+            Please select a gender
+        </div>
+        <div v-if="!matchedCategories.length && categorySearchBoxQuery">
+            No category found for this search
+        </div>
     </div>
     
     <h3>Website</h3>
-    <div v-for="website in websites" :key="website.id">
+    <!--
+    <div class="search-box-container">
+        <input class="search-box" type="text" name="search-website" id="search-website" placeholder="Search for a website"
+            v-model="websiteSearchBoxQuery"
+         />
+         <button class="search-clear-button" type="button" @click="websiteSearchBoxQuery=''">
+            Clear
+        </button>
+    </div>
+    -->
+    <div v-for="website in filteredWebsites" :key="website.id">
         <input type="checkbox" :id="website.id" :value="website.id" v-model="formData.websites" >
         <label :for="website.id">{{ website.name }}</label>
     </div>
-    <div v-if="!websites.length">
+    <div v-if="!websites.length && !websiteSearchBoxQuery">
         Please select a gender and category
+    </div>
+    <div v-if="!filteredWebsites.length && websiteSearchBoxQuery">
+        No websites found for this search
     </div>
 
     <div v-if="formErrors.length">

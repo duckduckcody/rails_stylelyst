@@ -1,0 +1,42 @@
+<div class="header">
+    <h1 class="header-brand">Stylelyst</h1>
+    <a class="header-settings header-link" href="/clothes/settings">Settings</a>
+</div>
+<div id="clothes-app">
+    <transition-group class="cards-container" name="clothes-list" tag="div">
+        <div class="card" v-for="clothe in clothes" :key="clothe.link">  
+            <div class="card-image-container">
+                <a :href="clothe.link" target="_blank">
+                    <img class="lazy card-image" :data-src="clothe.image">
+                </a>
+            </div>
+            <div class="card-info-container">
+                <p class="card-brand uppercase font-weight-light" v-if="clothe.brand">
+                    {{clothe.brand}}
+                </p>
+                <p class="card-name capitalize">
+                    <b>{{clothe.name}}</b>
+                </p>
+                <p class="card-price">
+                    ${{clothe.price}}
+                    <i class="far fa-star clickable" @click="favouriteClick"></i>
+                </p>
+                <p v-if="clothe.sizzle_text">
+                    {{clothe.sizzle_text}}
+                </p>
+            </div>
+        </div>
+    </transition-group>
+    <div class="empty-message">
+        <span v-if="!clothes.length && !loadingClothes">
+            This list has no styles.
+        </span>
+        <span v-if="loadingClothes">
+            <i class="fas fa-spinner fa-spin"></i>
+            Fetching 
+            <span v-if="!clothes.length">your</span>
+            <span v-if="clothes.length">more</span>
+            styles...
+        </span> 
+    </div>
+</div>

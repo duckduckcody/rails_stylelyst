@@ -11,7 +11,14 @@ ck_website.website_url_htmls.create!(url_extension: '/collections/mens-tops', we
 ck_website.website_url_htmls.create!(url_extension: '/collections/mens-bottoms', website_url_function: @url_function_page, category: @male_bottoms, scraper_html: ck_html_scraper)
 ck_website.website_url_htmls.create!(url_extension: '/collections/mens-tops-jacket', website_url_function: @url_function_page, category: @male_jackets, scraper_html: ck_html_scraper)
 ck_website.website_url_htmls.create!(url_extension: '/collections/mens-tops-hood', website_url_function: @url_function_page, category: @male_hoodies, scraper_html: ck_html_scraper)
+ck_website.website_url_htmls.create!(url_extension: '/collections/mens-bottoms-pants', category: @male_pants, website_url_function: @url_function_page,scraper_html: ck_html_scraper)
+ck_website.website_url_htmls.create!(url_extension: '/collections/mens-bottoms-track-pants', category: @male_track_pants, website_url_function: @url_function_page,scraper_html: ck_html_scraper)
+ck_website.website_url_htmls.create!(url_extension: '/collections/mens-bottoms-jogger', category: @male_joggers, website_url_function: @url_function_page,scraper_html: ck_html_scraper)
+ck_website.website_url_htmls.create!(url_extension: '/collections/mens-bottoms-jeans', category: @male_jeans, website_url_function: @url_function_page,scraper_html: ck_html_scraper)
+ck_website.website_url_htmls.create!(url_extension: '/collections/mens-bottoms-shorts', category: @male_shorts, website_url_function: @url_function_page,scraper_html: ck_html_scraper)
 ck_website.website_url_htmls.create!(url_extension: '/collections/markdowns/gender-mens', website_url_function: @url_function_page, category: @male_clearance, scraper_html: ck_html_scraper)
+
+
 #female
 ck_website.website_url_htmls.create!(url_extension: '/collections/womens-tops', website_url_function: @url_function_page, category: @female_tops, scraper_html: ck_html_scraper)
 ck_website.website_url_htmls.create!(url_extension: '/collections/womens-tops-dress', website_url_function: @url_function_page, category: @female_dresses, scraper_html: ck_html_scraper)

@@ -44,6 +44,13 @@ $large-desktop: 1200px;
     margin-top: $header-height;
     display: flex;
     flex-flow: row wrap;
+    .clothes-list-enter-active {
+        transition: all 1s;
+    }
+    .clothes-list-enter {
+        opacity: 0;
+        transform: translateY(30px);
+    }
     .card {
         flex: 0 0 25%;
         padding: 15px;
@@ -77,10 +84,12 @@ $large-desktop: 1200px;
             font-size: 13px;
         }   
     }
-    .empty-message {
-        flex: 0 0 100%;
-        text-align: center;
-    }
+}
+
+.empty-message {
+    flex: 0 0 100%;
+    margin: 50px 0;
+    text-align: center;
 }
 
 .settings-form {
@@ -91,7 +100,7 @@ $large-desktop: 1200px;
         .search-box {
             flex: 1 1 75%;
             text-align: center;
-            padding: 10px 10px;
+            padding: 5px;
         }
         .search-clear-button {
             flex: 0 0 10%;

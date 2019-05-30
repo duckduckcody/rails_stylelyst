@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require @fortawesome/fontawesome-free/css/all.min.css
  */
 
 *, *:before, *:after {
@@ -40,4 +41,8 @@ p {
 
 .font-weight-light {
     font-weight: 200;
+}
+
+.clickable {
+    cursor: pointer;
 }

@@ -102,6 +102,68 @@ document.addEventListener('turbolinks:load', function() {
             }
         })
     } else if (document.getElementById('body').className == 'clothes index') {
-        new LazyLoad({elements_selector: ".lazy"});
+        new Vue({
+            el: '#clothes-app',
+            data: {
+                clothes: [],
+                loadingClothes: false,
+                page: 0,
+                lazyLoad: null,
+                category: Cookies.get('category'),
+                websites: Cookies.get('websites'),
+                scrollDebounceWaitTime: 150,
+                bottomOfPageIntersectionReduction: 750
+            },
+            mounted() {
+                this.lazyLoad = new LazyLoad({elements_selector: ".lazy"})
+            },
+            created() {
+                this.getClothes()
+                window.addEventListener('scroll', _.debounce(this.isBottomOfPage, this.scrollDebounceWaitTime))
+            },
+            methods: {
+                isBottomOfPage() {
+                    if (
+                        ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - this.bottomOfPageIntersectionReduction)
+                        && !this.loadingClothes
+                    ) {
+                        this.getClothes()
+                    }
+                },
+                favouriteClick(link) {
+                    var cookies = Cookies.getJSON('favourites')
+                    !cookies ? cookies = [] : ''
+                    Cookies.set('favourites', cookies.concat(link), {expires: 365})
+                },
+                getClothes() {
+                    this.page += 1
+                    this.loadingClothes = true
+                    let request = new Request(
+                        '/clothes/get_clothes',
+                        {
+                            method: 'POST',
+                            body: JSON.stringify({
+                                'page': this.page,
+                                'category': this.category,
+                                'websites': this.websites
+                            }),
+                            headers: new Headers({
+                                'Content-Type': 'application/json'
+                            })
+                        }
+                    )
+                    fetch(request)
+                    .then((res) => res.json())
+                    .then((json) => {
+                        this.loadingClothes = false
+                        this.setClothes(json.clothes)
+                    })
+                },
+                setClothes(clothes) {
+                    this.clothes = this.clothes.concat(clothes)
+                    Vue.nextTick(() => this.lazyLoad.update())
+                }
+            }
+        })
     }
 })

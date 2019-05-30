@@ -8,6 +8,7 @@
     </label>
 
     <h3>Category</h3>
+    <!-- 
     <div class="search-box-container">
         <input class="search-box" type="text" name="search-category" id="search-category" placeholder="Search for a category"
             v-model="categorySearchBoxQuery"
@@ -16,6 +17,7 @@
             Clear
         </button>
     </div>
+    -->
     <div class="settings-category-radio-container">
         <label class="settings-category-radio radio" v-for="category in matchedCategories">
             <input type="radio" name="category" :value="category.id" v-model="formData.category"/>
@@ -30,6 +32,7 @@
     </div>
     
     <h3>Website</h3>
+    <!--
     <div class="search-box-container">
         <input class="search-box" type="text" name="search-website" id="search-website" placeholder="Search for a website"
             v-model="websiteSearchBoxQuery"
@@ -38,6 +41,7 @@
             Clear
         </button>
     </div>
+    -->
     <div v-for="website in filteredWebsites" :key="website.id">
         <input type="checkbox" :id="website.id" :value="website.id" v-model="formData.websites" >
         <label :for="website.id">{{ website.name }}</label>

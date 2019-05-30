@@ -1,4 +1,4 @@
-@female = Gender.create!(name: 'Female')
+@female = Gender.create!(name: 'Womens')
 
 # tops
 @female_tops = Category.create!(name: 'All Tops', gender: @female)

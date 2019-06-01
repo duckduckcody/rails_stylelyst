@@ -132,8 +132,17 @@ document.addEventListener('turbolinks:load', function() {
                 },
                 favouriteClick(link) {
                     var cookies = Cookies.getJSON('favourites')
+                    _.indexOf(cookies, link) === -1
+                        ? this.addFavourite(link, cookies)
+                        : this.removeFavourite(link, cookies)
+                },
+                addFavourite(link, cookies) {
                     !cookies ? cookies = [] : ''
                     Cookies.set('favourites', cookies.concat(link), {expires: 365})
+                },
+                removeFavourite(link, cookies) {
+                    _.pull(cookies, link)
+                    Cookies.set('favourites', cookies, {expires: 365})
                 },
                 getClothes() {
                     this.page += 1

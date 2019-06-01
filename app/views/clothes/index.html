@@ -19,7 +19,7 @@
                 </p>
                 <p class="card-price">
                     ${{clothe.price}}
-                    <i class="far fa-star clickable" @click="favouriteClick"></i>
+                    <i class="far fa-star clickable" @click="favouriteClick(clothe.link)"></i>
                 </p>
                 <p v-if="clothe.sizzle_text">
                     {{clothe.sizzle_text}}

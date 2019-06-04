@@ -19,7 +19,7 @@
                 </p>
                 <p class="card-price">
                     ${{clothe.price}}
-                    <i class="far fa-star clickable" @click="favouriteClick"></i>
+                    <i class="far fa-star clickable" @click="favouriteClick(clothe.link)"></i>
                 </p>
                 <p v-if="clothe.sizzle_text">
                     {{clothe.sizzle_text}}
@@ -29,7 +29,8 @@
     </transition-group>
     <div class="empty-message">
         <span v-if="!clothes.length && !loadingClothes">
-            This list has no styles.
+            This list has no styles. <br>
+            Select 'Settings' in the top right to select your style.
         </span>
         <span v-if="loadingClothes">
             <i class="fas fa-spinner fa-spin"></i>

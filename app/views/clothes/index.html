@@ -29,7 +29,8 @@
     </transition-group>
     <div class="empty-message">
         <span v-if="!clothes.length && !loadingClothes">
-            This list has no styles.
+            This list has no styles. <br>
+            Select 'Settings' in the top right to select your style.
         </span>
         <span v-if="loadingClothes">
             <i class="fas fa-spinner fa-spin"></i>

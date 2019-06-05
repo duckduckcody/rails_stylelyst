@@ -13,11 +13,4 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require vue/dist/vue.js
-//= require js-cookie/src/js.cookie.js
-//= require vanilla-lazyload/dist/lazyload.min.js
-//= require lodash/lodash.min.js
-//= require @fortawesome/fontawesome-free/js/all.js
 //= require_tree .
-
-FontAwesome.config.mutateApproach = 'sync'

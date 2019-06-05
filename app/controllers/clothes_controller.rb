@@ -18,11 +18,11 @@ class ClothesController < ApplicationController
     render :json => {'clothes': clothes}
   end
 
-  def settings
-    @websites = Website.all
-    @categories = Category.all
-    @genders = Gender.all
-    @user_settings = UserSettingsService.call(cookies)
+  def get_settings
+    render :json => {
+      'genders': Gender.all,
+      'categories': Category.all
+    }
   end
 
   def website_match

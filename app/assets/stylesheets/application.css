@@ -13,35 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-*, *:before, *:after {
-    box-sizing: border-box;
-}
-
-body {
-    margin: 0;
-}
-
-p {
-    margin: 0;
-}
-
-.line-through {
-    text-decoration: line-through;
-}
-
-.capitalize {
-    text-transform: capitalize;
-}
-
-.uppercase {
-    text-transform: uppercase
-}
-
-.font-weight-light {
-    font-weight: 200;
-}
-
-.clickable {
-    cursor: pointer;
-}

@@ -1,25 +1,63 @@
 <template>
-  <div id="app">
+  <div>
     <div class="header">
       <h1 class="header-brand">Stylelyst</h1>
-      <a class="header-settings header-link" href="/clothes/settings">Settings</a>
+      <router-link class="header-settings header-link" to="/settings">
+        Settings
+      </router-link>
     </div>
-    <body>
-      <h1>My Vue App!</h1>
-    </body>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
 <script>
+  import '@fortawesome/fontawesome-free/css/all'
+  
   export default {
     name: 'app'
   }
-  // need to make both clothes and settings components
-  // then add router to go between them
 </script>
 
-<style scoped>
-  h1 {
-    text-align: center;
+<style lang="sass" scoped>
+  $phone: 576px;
+  $tablet: 768px;
+  $header-height: 60px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: $header-height;
+    padding: 0 20px;
+    background-color: white;
+    font-size: 16px;
+    .header-brand {
+        font-size: 2em;
+    }
+    .header-page {
+        font-size: 1em;
+    }
+    .header-link {
+        font-size: 1em;
+    }
+    * {
+        margin: 0 15px 0 0;
+    }
+    a:last-child {
+        margin: 0 0 0 auto;
+    }
+    @media screen and (min-width: $phone) and (max-width: $tablet) {
+        padding: 0 10px;
+        font-size: 15px;
+    }
+    @media screen and (max-width: $phone) {
+        padding: 0 5px;
+        font-size: 14px;
+    }
   }
 </style>

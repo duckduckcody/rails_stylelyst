@@ -5,6 +5,7 @@ ruby '2.6.3'
 gem 'httparty', '~> 0.17.0'
 gem 'sentry-raven'
 gem 'webpacker', '~> 4.x'
+gem "interactor-rails", "~> 2.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

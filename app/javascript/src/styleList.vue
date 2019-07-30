@@ -1,7 +1,7 @@
 <template>
 <div>
     <transition-group class="cards-container" name="clothes-list" tag="div">
-        <div class="card" v-for="clothe in clothes" :key="clothe.link">
+        <div class="card" v-for="clothe in clothes" :key="clothe.name">
             <div class="card-image-container">
                 <a :href="clothe.link" target="_blank">
                     <img class="lazy card-image" :data-src="clothe.image">

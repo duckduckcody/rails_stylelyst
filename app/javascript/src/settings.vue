@@ -60,6 +60,8 @@
 <script>
 import Cookie from 'js-cookie'
 import _ from 'lodash'
+import getJson from "./interactors/getJson"
+import postJson from "./interactors/postJson"
 
 export default {
     name: 'settings',
@@ -108,21 +110,14 @@ export default {
     },
     created() {
         this.loadingSettings = true
-        let request = new Request(
-            '/clothes/get_settings', {
-                method: 'GET',
-            }
-        )
-        fetch(request)
-            .then((res) => res.json())
-            .then((json) => {
-                this.categories = json.categories
-                this.genders = json.genders
-                this.formData.category = Cookie.get('category')
-                this.formData.gender = Cookie.get('gender')
-                this.formData.websites = Cookie.getJSON('websites')
-                this.loadingSettings = false;
-            })
+        getJson({url: '/clothes/get_settings'}).then(({json}) => {
+            this.categories = json.categories
+            this.genders = json.genders
+            this.formData.category = Cookie.get('category')
+            this.formData.gender = Cookie.get('gender')
+            this.formData.websites = Cookie.getJSON('websites')
+            this.loadingSettings = false;
+        })
     },
     methods: {
         clickGender: function () {
@@ -130,23 +125,10 @@ export default {
             this.websites = []
         },
         fetchWebsites: function () {
-            let request = new Request(
-                '/clothes/website_match', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        'category': this.formData.category
-                    }),
-                    headers: new Headers({
-                        'Content-Type': 'application/json'
-                    })
-                }
-            )
-            fetch(request)
-                .then((res) => res.json())
-                .then((json) => {
-                    this.websites = json.websites
-                    this.fillWebsites()
-                })
+            postJson({url: '/clothes/website_match', body:{'category': this.formData.category}}).then(({json}) => {
+                this.websites = json.websites
+                this.fillWebsites()
+            })
         },
         fillWebsites: function () {
             var websiteCopy = this.formData.websites

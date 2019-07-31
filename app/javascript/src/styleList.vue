@@ -43,7 +43,8 @@
 <script>
 import Cookie from 'js-cookie'
 import _ from 'lodash'
-import LazyLoad from "vanilla-lazyload";
+import LazyLoad from "vanilla-lazyload"
+import postJson from './interactors/postJson'
 
 export default {
     name: 'styleList',
@@ -98,22 +99,15 @@ export default {
         getClothes() {
             this.page += 1
             this.loadingClothes = true
-            let request = new Request(
-                '/clothes/get_clothes', {
-                    method: 'POST',
-                    body: JSON.stringify({
+            postJson({
+                    url: '/clothes/get_clothes', 
+                    body:{
                         'page': this.page,
                         'category': this.category,
                         'websites': this.websites
-                    }),
-                    headers: new Headers({
-                        'Content-Type': 'application/json'
-                    })
-                }
-            )
-            fetch(request)
-                .then((res) => res.json())
-                .then((json) => {
+                    }
+                })
+                .then(({json}) => {
                     this.loadingClothes = false
                     this.setClothes(json.clothes)
                 })

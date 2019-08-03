@@ -99,7 +99,7 @@ export default {
   methods: {
     getSettings: function() {
       this.loadingSettings = true;
-      getJson({ url: "/clothes/get_settings" }).then(({ json }) => {
+      getJson({ url: "/settings/get_all_settings" }).then(({ json }) => {
         this.categories = json.categories;
         this.genders = json.genders;
         this.formData.category = Cookie.get("category");
@@ -114,7 +114,7 @@ export default {
     },
     getWebsites: function() {
       postJson({
-        url: "/clothes/website_match",
+        url: "/settings/get_website_settings_by_category",
         body: { category: this.formData.category }
       }).then(({ json }) => {
         this.websites = json.websites;

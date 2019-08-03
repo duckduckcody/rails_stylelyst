@@ -73,7 +73,7 @@ export default {
       this.page += 1;
       this.loadingClothes = true;
       postJson({
-        url: "/clothes/get_clothes",
+        url: "/clothes/get_all_clothes",
         body: {
           page: this.page,
           category: this.category,

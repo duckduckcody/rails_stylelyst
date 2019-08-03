@@ -1,39 +1,39 @@
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    margin: 0;
+  margin: 0;
 }
 
 p {
-    margin: 0;
+  margin: 0;
 }
 
 .line-through {
-    text-decoration: line-through;
+  text-decoration: line-through;
 }
 
 .capitalize {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .uppercase {
-    text-transform: uppercase
+  text-transform: uppercase;
 }
 
 .font-weight-light {
-    font-weight: 200;
+  font-weight: 200;
 }
 
 .clickable {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .empty-message {
-    flex: 0 0 100%;
-    margin: 50px 0;
-    text-align: center;
+  flex: 0 0 100%;
+  margin: 50px 0;
+  text-align: center;
 }

@@ -3,7 +3,7 @@ class GetClothes
 
   def call
     context.clothes = []
-    if context.page.present? & context.category.present? & context.websites.present?
+    if param_present?()
       page = context.page
       category = context.category
       websites = JSON.parse(context.websites)
@@ -11,7 +11,18 @@ class GetClothes
       context.clothes = websites.each_with_object([]) do |website_id, clothes|
         website = Website.find(website_id)
         clothes.concat(website.scrape(category, page, url_function))
+
+        # scrape (website, category, page, url_function)
+
+        # website -> get_website_url
+        # website_url -> get_scraper
+        # scraper -> get_each_html_component
+        # html_componet -> 
       end      
     end
+  end
+
+  def param_present?
+    context.page.present? & context.category.present? & context.websites.present?
   end
 end

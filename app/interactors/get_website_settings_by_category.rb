@@ -1,4 +1,4 @@
-class WebsiteMatchByCategory
+class GetWebsiteSettingsByCategory
   include Interactor
 
   def call

@@ -10,14 +10,13 @@ class GetClothes
       url_function = WebsiteUrlFunction.find_by(name: 'page')
       context.clothes = websites.each_with_object([]) do |website_id, clothes|
         website = Website.find(website_id)
-        clothes.concat(website.scrape(category, page, url_function))
-
-        # scrape (website, category, page, url_function)
-
-        # website -> get_website_url
-        # website_url -> get_scraper
-        # scraper -> get_each_html_component
-        # html_componet -> 
+        result = WebsiteScrape.call({
+          website: website,
+          category: category,
+          url_function: url_function,
+          page: page
+        })
+        clothes.concat(result.clothes)
       end      
     end
   end

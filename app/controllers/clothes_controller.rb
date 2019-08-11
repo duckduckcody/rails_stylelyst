@@ -3,7 +3,7 @@ class ClothesController < ApplicationController
   end
 
   def get_all_clothes
-    result = GetClothes.call(params)
+    result = ScrapeClothes.call(params)
     render :json => {'clothes': result.clothes}
   end
 end

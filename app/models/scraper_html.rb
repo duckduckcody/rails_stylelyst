@@ -1,3 +1,13 @@
+# == Schema Information
+#
+# Table name: scraper_htmls
+#
+#  id                 :integer          not null, primary key
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  container_selector :string
+#
+
 class ScraperHtml < ApplicationRecord
     has_many :website_url_htmls
     has_many :scraper_html_components

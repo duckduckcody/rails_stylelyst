@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_09_024406) do
+ActiveRecord::Schema.define(version: 2019_08_24_121037) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -26,60 +26,52 @@ ActiveRecord::Schema.define(version: 2019_05_09_024406) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "scraper_html_component_images", force: :cascade do |t|
+  create_table "scraper_field_images", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "scraper_html_component_links", force: :cascade do |t|
+  create_table "scraper_field_links", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "scraper_html_component_prices", force: :cascade do |t|
+  create_table "scraper_field_prices", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "scraper_html_component_texts", force: :cascade do |t|
+  create_table "scraper_field_texts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "scraper_html_components", force: :cascade do |t|
+  create_table "scraper_fields", force: :cascade do |t|
     t.string "name"
     t.string "selector"
     t.string "type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "scraper_html_id"
-    t.index ["scraper_html_id"], name: "index_scraper_html_components_on_scraper_html_id"
+    t.integer "scraper_id"
+    t.index ["scraper_id"], name: "index_scraper_fields_on_scraper_id"
   end
 
-  create_table "scraper_htmls", force: :cascade do |t|
+  create_table "scrapers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "container_selector"
+    t.integer "website_id"
+    t.index ["website_id"], name: "index_scrapers_on_website_id"
   end
 
-  create_table "website_url_functions", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "website_url_htmls", force: :cascade do |t|
+  create_table "website_pages", force: :cascade do |t|
     t.string "url_extension"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "website_id"
     t.integer "category_id"
-    t.integer "website_url_function_id"
-    t.integer "scraper_html_id"
-    t.index ["category_id"], name: "index_website_url_htmls_on_category_id"
-    t.index ["scraper_html_id"], name: "index_website_url_htmls_on_scraper_html_id"
-    t.index ["website_id"], name: "index_website_url_htmls_on_website_id"
-    t.index ["website_url_function_id"], name: "index_website_url_htmls_on_website_url_function_id"
+    t.index ["category_id"], name: "index_website_pages_on_category_id"
+    t.index ["website_id"], name: "index_website_pages_on_website_id"
   end
 
   create_table "websites", force: :cascade do |t|

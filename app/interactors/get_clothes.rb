@@ -9,7 +9,6 @@ class GetClothes
         result = ScrapeWebsite.call({
           website: Website.find(website_id),
           category: context.category,
-          url_function: WebsiteUrlFunction.find_by(name: 'page'),
           page_number: context.page
         })
         clothes.concat(result.scraped_content)

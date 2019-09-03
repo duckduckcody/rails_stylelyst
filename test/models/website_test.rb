@@ -9,6 +9,7 @@
 #  updated_at              :datetime         not null
 #  query_string_key_page   :string
 #  query_string_key_search :string
+#  scraper_id              :integer
 #
 
 require 'test_helper'

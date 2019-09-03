@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: scraper_htmls
+# Table name: scrapers
 #
 #  id                 :integer          not null, primary key
 #  created_at         :datetime         not null
@@ -8,13 +8,13 @@
 #  container_selector :string
 #
 
-class ScraperHtml < ApplicationRecord
-    has_many :website_url_htmls
-    has_many :scraper_html_components
-    has_many :scraper_html_component_texts
-    has_many :scraper_html_component_prices
-    has_many :scraper_html_component_images
-    has_many :scraper_html_component_links
+class Scraper < ApplicationRecord
+    belongs_to :website
+    has_many :scraper_fields
+    has_many :scraper_field_texts
+    has_many :scraper_field_prices
+    has_many :scraper_field_images
+    has_many :scraper_field_links
     
     def scrape(html, base_url)
         return html.css(self.container_selector).map { |container|

@@ -1,17 +1,19 @@
 # == Schema Information
 #
-# Table name: website_url_functions
+# Table name: scraper_fields
 #
 #  id         :integer          not null, primary key
 #  name       :string
+#  selector   :string
+#  type       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  scraper_id :integer
 #
 
-require 'test_helper'
-
-class WebsiteUrlFunctionTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+class ScraperField < ApplicationRecord
+    belongs_to :scraper
+    
+    def scrape
+    end
 end

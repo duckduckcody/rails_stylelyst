@@ -6,11 +6,7 @@ class FindWebsiteUrl
   def call
     website = context.website
     category = context.category
-    url_function = context.url_function
-    context.website_url = context.website.website_url_htmls
-      .find_by(
-          category: context.category,
-          website_url_function: context.url_function
-      )
+    context.website_page = website.website_pages
+      .find_by(category: category)
   end
 end

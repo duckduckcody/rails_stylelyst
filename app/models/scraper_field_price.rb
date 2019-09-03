@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: scraper_html_components
+# Table name: scraper_fields
 #
-#  id              :integer          not null, primary key
-#  name            :string
-#  selector        :string
-#  type            :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  scraper_html_id :integer
+#  id         :integer          not null, primary key
+#  name       :string
+#  selector   :string
+#  type       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  scraper_id :integer
 #
 
-class ScraperHtmlComponentPrice < ScraperHtmlComponent
+class ScraperFieldPrice < ScraperField
     def scrape(params)
         price = nil
         selectors = self.selector.split(',')

@@ -5,10 +5,10 @@ class GenerateUrl
   # @returns context.url
   def call
     website = context.website
-    website_page = context.website_page
+    url_extension = context.url_extension
     page_number = context.page_number
     query_string = generate_query_string(website, page_number)
-    context.url = website.url + website_page.url_extension + query_string
+    context.url = website.url + url_extension + query_string
   end
 
   def generate_query_string(website, page_number)

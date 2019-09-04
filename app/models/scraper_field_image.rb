@@ -11,7 +11,7 @@
 #  scraper_id :integer
 #
 
-class ScraperFieldImage < ScraperField
+class ScraperFieldImage < ScraperField    
     def scrape(params)
         @image = params[:html].css(self.selector).css('img').attr('src')
         if @image.nil?

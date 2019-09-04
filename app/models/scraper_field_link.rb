@@ -11,9 +11,7 @@
 #  scraper_id :integer
 #
 
-class ScraperFieldLink < ScraperField
-    belongs_to :scraper_html
-    
+class ScraperFieldLink < ScraperField    
     def scrape(params)
         begin
             params[:base_url] + params[:html].css(self.selector).attr('href')

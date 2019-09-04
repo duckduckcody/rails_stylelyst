@@ -11,7 +11,7 @@
 #  scraper_id :integer
 #
 
-class ScraperFieldPrice < ScraperField
+class ScraperFieldPrice < ScraperField    
     def scrape(params)
         price = nil
         selectors = self.selector.split(',')

@@ -96,4 +96,6 @@ Rails.application.configure do
   Raven.configure do |config|
     config.dsn = 'https://b3ce02972e4348789d466834d8f4daf4:d67a92539b9b434b9b171fbe006b2e5b@sentry.io/1459668'
   end
+
+  config.cache_expiry = 10.minutes
 end

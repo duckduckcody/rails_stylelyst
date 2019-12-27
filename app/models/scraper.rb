@@ -22,7 +22,10 @@ class Scraper < ApplicationRecord
   end
 
   def get_html(url)
-    GetHtml.call({ url: url }).html
+    GetHtml.call(
+      { url: url, emulate_browser_get: self.website.emulate_browser_get }
+    )
+      .html
   end
 
   def scrape(html)

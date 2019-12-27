@@ -27,7 +27,8 @@ bb_website =
     url: 'https://www.beginningboutique.com.au',
     scraper: beginning_boutique_scraper,
     query_string_key_page: 'page',
-    query_string_key_search: 'q'
+    query_string_key_search: 'q',
+    emulate_browser_get: false
   )
 bb_website.website_pages.create!(
   url_extension: '/collections/tops', category: @female_tops

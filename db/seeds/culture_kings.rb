@@ -25,7 +25,8 @@ ck_website =
     url: 'https://www.culturekings.com.au',
     scraper: ck_scraper,
     query_string_key_page: 'page',
-    query_string_key_search: 'query'
+    query_string_key_search: 'query',
+    emulate_browser_get: true
   )
 #male
 ck_website.website_pages.create!(

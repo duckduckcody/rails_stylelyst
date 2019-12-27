@@ -6,11 +6,16 @@ class GetHtml
 
   def call
     url = context.url
+    emulate_browser_get = context.emulate_browser_get
     cachedResult = Rails.cache.read(url)
     if cachedResult
       context.html = Nokogiri::HTML::Document.new(cachedResult)
     else
-      html = selenium_get(url)
+      if emulate_browser_get
+        html = selenium_get(url)
+      else
+        html = html_get(url)
+      end
       result = Nokogiri.HTML(html)
       Rails.cache.write(
         result.serialize,
@@ -28,7 +33,7 @@ class GetHtml
     return html
   end
 
-  def open_uri_get(url)
+  def html_get(url)
     HTTParty.get(url)
   end
 end

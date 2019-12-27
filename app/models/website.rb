@@ -12,6 +12,6 @@
 #
 
 class Website < ApplicationRecord
-    has_many :website_pages
-    has_one :scraper
+  has_many :website_pages
+  has_one :scraper
 end

@@ -12,6 +12,6 @@ class GenerateUrl
   end
 
   def generate_query_string(website, page_number)
-    '?' + {website.query_string_key_page => page_number}.to_query
+    '?' + { website.query_string_key_page => page_number }.to_query
   end
 end

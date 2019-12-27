@@ -1,4 +1,3 @@
-
 # == Schema Information
 #
 # Table name: website_pages
@@ -27,11 +26,14 @@ class WebsitePage < ApplicationRecord
   end
 
   def generate_url(page_number)
-    result = GenerateUrl.call({
-      website: self.website,
-      url_extension: self.url_extension,
-      page_number: page_number
-    })
+    result =
+      GenerateUrl.call(
+        {
+          website: self.website,
+          url_extension: self.url_extension,
+          page_number: page_number
+        }
+      )
     return result.url
   end
 end

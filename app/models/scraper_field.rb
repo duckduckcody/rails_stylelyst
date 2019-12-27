@@ -12,8 +12,7 @@
 #
 
 class ScraperField < ApplicationRecord
-    belongs_to :scraper
-    
-    def scrape
-    end
+  belongs_to :scraper
+
+  def scrape; end
 end

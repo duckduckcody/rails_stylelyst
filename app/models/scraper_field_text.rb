@@ -12,11 +12,9 @@
 #
 
 class ScraperFieldText < ScraperField
-    def scrape(params)
-        begin
-            params[:html].css(self.selector).text
-        rescue
-            nil
-        end
-    end
+  def scrape(params)
+    params[:html].css(self.selector).text
+  rescue StandardError
+    nil
+  end
 end

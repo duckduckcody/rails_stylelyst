@@ -1,2 +1,1 @@
-module ClothesHelper
-end
+module ClothesHelper; end

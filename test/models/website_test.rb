@@ -13,5 +13,4 @@
 
 require 'test_helper'
 
-class WebsiteTest < ActiveSupport::TestCase
-end
+class WebsiteTest < ActiveSupport::TestCase; end

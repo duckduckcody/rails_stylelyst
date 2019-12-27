@@ -11,7 +11,8 @@
 @female_bodysuits = Category.create!(name: 'Bodysuits', gender: @female)
 @female_camis = Category.create!(name: 'Camis', gender: @female)
 @female_long_sleeve = Category.create!(name: 'Long Sleeve', gender: @female)
-@female_off_shoulder_tops = Category.create!(name: 'Off the Should Tops', gender: @female)
+@female_off_shoulder_tops =
+  Category.create!(name: 'Off the Should Tops', gender: @female)
 @female_printed_tees = Category.create!(name: 'Printed Tees', gender: @female)
 @female_short_sleeve = Category.create!(name: 'Short Sleeve', gender: @female)
 

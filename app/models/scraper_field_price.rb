@@ -11,18 +11,18 @@
 #  scraper_id :integer
 #
 
-class ScraperFieldPrice < ScraperField    
-    def scrape(params)
-        price = nil
-        selectors = self.selector.split(',')
-        selectors.each { |selector|
-            price = scrape_price(params[:html], selector)
-            break if price != 0.0
-        }
-        return price
+class ScraperFieldPrice < ScraperField
+  def scrape(params)
+    price = nil
+    selectors = self.selector.split(',')
+    selectors.each do |selector|
+      price = scrape_price(params[:html], selector)
+      break if price != 0.0
     end
+    return price
+  end
 
-    def scrape_price(html, selector)
-        html.css(selector).text.tr('$','').to_f
-    end
+  def scrape_price(html, selector)
+    html.css(selector).text.tr('$', '').to_f
+  end
 end

@@ -1,2 +1,1 @@
-module HtmlHelper
-end
+module HtmlHelper; end

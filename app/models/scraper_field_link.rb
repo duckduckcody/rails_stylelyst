@@ -11,12 +11,10 @@
 #  scraper_id :integer
 #
 
-class ScraperFieldLink < ScraperField    
-    def scrape(params)
-        begin
-            params[:base_url] + params[:html].css(self.selector).attr('href')
-        rescue
-            nil
-        end
-    end
+class ScraperFieldLink < ScraperField
+  def scrape(params)
+    params[:base_url] + params[:html].css(self.selector).attr('href')
+  rescue StandardError
+    nil
+  end
 end

@@ -6,6 +6,8 @@ gem 'httparty', '~> 0.17.0'
 gem 'sentry-raven'
 gem 'webpacker', '~> 4.x'
 gem 'interactor-rails', '~> 2.0'
+gem 'webdrivers', '~> 4.0'
+gem 'selenium-webdriver'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4.1'
@@ -46,6 +48,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'prettier'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
@@ -58,8 +61,6 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  gem 'webdrivers', '~> 3.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

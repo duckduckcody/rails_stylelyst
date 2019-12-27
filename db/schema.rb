@@ -11,74 +11,76 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2019_08_24_121037) do
-  create_table 'categories', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'gender_id'
-    t.index %w[gender_id], name: 'index_categories_on_gender_id'
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "gender_id"
+    t.index ["gender_id"], name: "index_categories_on_gender_id"
   end
 
-  create_table 'genders', force: :cascade do |t|
-    t.string 'name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "genders", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'scraper_field_images', force: :cascade do |t|
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "scraper_field_images", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'scraper_field_links', force: :cascade do |t|
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "scraper_field_links", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'scraper_field_prices', force: :cascade do |t|
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "scraper_field_prices", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'scraper_field_texts', force: :cascade do |t|
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "scraper_field_texts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'scraper_fields', force: :cascade do |t|
-    t.string 'name'
-    t.string 'selector'
-    t.string 'type'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'scraper_id'
-    t.index %w[scraper_id], name: 'index_scraper_fields_on_scraper_id'
+  create_table "scraper_fields", force: :cascade do |t|
+    t.string "name"
+    t.string "selector"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "scraper_id"
+    t.index ["scraper_id"], name: "index_scraper_fields_on_scraper_id"
   end
 
-  create_table 'scrapers', force: :cascade do |t|
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'container_selector'
-    t.integer 'website_id'
-    t.index %w[website_id], name: 'index_scrapers_on_website_id'
+  create_table "scrapers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "container_selector"
+    t.integer "website_id"
+    t.index ["website_id"], name: "index_scrapers_on_website_id"
   end
 
-  create_table 'website_pages', force: :cascade do |t|
-    t.string 'url_extension'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'website_id'
-    t.integer 'category_id'
-    t.index %w[category_id], name: 'index_website_pages_on_category_id'
-    t.index %w[website_id], name: 'index_website_pages_on_website_id'
+  create_table "website_pages", force: :cascade do |t|
+    t.string "url_extension"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "website_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_website_pages_on_category_id"
+    t.index ["website_id"], name: "index_website_pages_on_website_id"
   end
 
-  create_table 'websites', force: :cascade do |t|
-    t.string 'name'
-    t.string 'url'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'query_string_key_page'
-    t.string 'query_string_key_search'
+  create_table "websites", force: :cascade do |t|
+    t.string "name"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "query_string_key_page"
+    t.string "query_string_key_search"
   end
+
 end

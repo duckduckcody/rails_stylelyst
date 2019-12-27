@@ -6,15 +6,14 @@
       </a>
     </div>
     <div class="card-info-container">
-      <p class="card-brand uppercase font-weight-light" v-if="clothe.brand">{{clothe.brand}}</p>
+      <p class="card-brand uppercase font-weight-light" v-if="clothe.brand">
+        {{ clothe.brand }}
+      </p>
       <p class="card-name capitalize">
-        <b>{{clothe.name}}</b>
+        <b>{{ clothe.name }}</b>
       </p>
-      <p class="card-price">
-        ${{clothe.price}}
-        <i class="far fa-star clickable"></i>
-      </p>
-      <p v-if="clothe.sizzle_text">{{clothe.sizzle_text}}</p>
+      <p class="card-price">${{ clothe.price }}</p>
+      <p v-if="clothe.sizzle_text">{{ clothe.sizzle_text }}</p>
     </div>
   </div>
 </template>

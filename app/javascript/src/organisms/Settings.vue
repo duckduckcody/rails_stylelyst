@@ -1,6 +1,5 @@
 <template>
   <form id="settingsForm" class="settings-form">
-    <h1>Settings</h1>
     <div v-if="loadingSettings" class="empty-message">
       <i class="fas fa-spinner fa-spin"></i>
       Loading Settings
@@ -168,7 +167,7 @@ export default {
 @import "../variables";
 
 .settings-form {
-  padding: 0 25px;
+  padding: $base-header-height 25px 0;
 
   .settings-category-radio-container {
     display: flex;

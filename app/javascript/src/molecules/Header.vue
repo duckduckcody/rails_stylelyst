@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <h1 class="header-brand">Stylelyst</h1>
+    <h1 class="header-brand">stylelyst</h1>
     <router-link class="header-settings header-link" to="/settings">Settings</router-link>
   </div>
 </template>

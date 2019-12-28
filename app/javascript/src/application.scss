@@ -1,3 +1,5 @@
+@import "./variables";
+
 *,
 *:before,
 *:after {
@@ -6,6 +8,8 @@
 
 body {
   margin: 0;
+  color: $blue_black;
+  font-family: $font_family;
 }
 
 p {

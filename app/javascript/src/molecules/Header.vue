@@ -26,9 +26,6 @@ export default {
   padding: 0 20px;
   background-color: white;
   font-size: 16px;
-  border-bottom: 1px solid $blue_black;
-  color: $blue_black;
-  font-family: $font_family;
 
   .header-brand {
     font-size: 2em;

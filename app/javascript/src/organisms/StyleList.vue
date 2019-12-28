@@ -8,17 +8,18 @@
       />
     </transition-group>
     <div class="empty-message">
-      <span v-if="!clothes.length && !loadingClothes">
+      <span v-if="!clothes.length && !loadingClothes && !loadingError">
         This list has no styles.
         <br />Select 'Settings' in the top right to select your style.
       </span>
-      <span v-if="loadingClothes">
+      <span v-if="loadingClothes && !loadingError">
         <i class="fas fa-spinner fa-spin"></i>
         Fetching
         <span v-if="!clothes.length">your</span>
         <span v-if="clothes.length">more</span>
         styles...
       </span>
+      <span v-if="!loadingClothes && loadingError">Error loading your styles. Please try again.</span>
     </div>
   </div>
 </template>
@@ -39,6 +40,7 @@ export default {
     return {
       clothes: [],
       loadingClothes: false,
+      loadingError: false,
       page: 0,
       lazyLoad: null,
       category: Cookie.get("category"),
@@ -79,10 +81,10 @@ export default {
           category: this.category,
           websites: this.websites
         }
-      }).then(({ json }) => {
-        this.loadingClothes = false;
-        this.setClothes(json.clothes);
-      });
+      })
+        .then(({ json }) => this.setClothes(json.clothes))
+        .catch(() => (this.loadingError = true))
+        .finally(() => (this.loadingClothes = false));
     },
     setClothes(clothes) {
       this.clothes = this.clothes.concat(clothes);

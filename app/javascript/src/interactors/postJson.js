@@ -13,6 +13,7 @@ export default function getJson(context) {
       .then(json => {
         context.json = json;
         resolve(context);
-      });
+      })
+      .catch(() => reject(request))
   });
 }

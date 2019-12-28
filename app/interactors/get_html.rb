@@ -6,7 +6,7 @@ class GetHtml
     emulate_browser_get = context.emulate_browser_get
     cachedResult = CacheService.get(url)
     if cachedResult
-      context.html = Nokogiri::HTML::Document.new(cachedResult)
+      context.html = Nokogiri.HTML(cachedResult)
     else
       if emulate_browser_get
         html = emulate_get(url)

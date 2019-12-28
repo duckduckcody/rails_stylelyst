@@ -1,7 +1,4 @@
-# the_iconic
-# culture_kings
 # universal
-# male_categories
 
 fileNames = %w[
   female_categories

@@ -6,13 +6,13 @@
       </a>
     </div>
     <div class="card-info-container">
-      <p class="card-brand uppercase font-weight-light" v-if="clothe.brand">
-        {{ clothe.brand }}
-      </p>
+      <p class="card-brand uppercase font-weight-light" v-if="clothe.brand">{{ clothe.brand }}</p>
       <p class="card-name capitalize">
         <b>{{ clothe.name }}</b>
       </p>
       <p class="card-price">${{ clothe.price }}</p>
+      <i class="far fa-star" v-if="!clothe.isFavourited" v-on:click="favouriteItem(clothe.link)"></i>
+      <i class="fas fa-star" v-else v-on:click="unfavouriteItem(clothe.link)"></i>
       <p v-if="clothe.sizzle_text">{{ clothe.sizzle_text }}</p>
     </div>
   </div>
@@ -22,7 +22,9 @@
 export default {
   name: "StyleListCard",
   props: {
-    clothe: Object
+    clothe: Object,
+    favouriteItem: Function,
+    unfavouriteItem: Function
   }
 };
 </script>

@@ -5,6 +5,8 @@
         v-for="(clothe, index) in clothes"
         :key="clothe.name + index"
         :clothe="clothe"
+        :favouriteItem="favouriteItem"
+        :unfavouriteItem="unfavouriteItem"
       />
     </transition-group>
     <div class="empty-message">
@@ -47,6 +49,7 @@ export default {
       lazyLoad: null,
       category: Cookie.get("category"),
       websites: Cookie.get("websites"),
+      favouriteItems: Cookie.getJSON("favourites") || [],
       scrollDebounceWaitTime: 150,
       bottomOfPageIntersectionReduction: 750
     };
@@ -85,12 +88,42 @@ export default {
         }
       })
         .then(({ json }) => this.setClothes(json.clothes))
-        .catch(() => (this.loadingError = true))
+        .catch(e => {
+          console.log(e);
+          this.loadingError = true;
+        })
         .finally(() => (this.loadingClothes = false));
     },
     setClothes(clothes) {
-      this.clothes = this.clothes.concat(clothes);
+      let favouritesClothes = this.setFavourites(clothes);
+      this.clothes = this.clothes.concat(favouritesClothes);
       this.$nextTick(() => this.lazyLoad.update());
+    },
+    setFavourites(clothes) {
+      clothes.forEach(clothe => {
+        if (this.favouriteItems.includes(clothe.link)) {
+          this.$set(clothe, "isFavourited", true);
+        }
+      });
+      return clothes;
+    },
+    favouriteItem(itemUrl) {
+      this.favouriteItems.push(itemUrl);
+      Cookie.set("favourites", this.favouriteItems, {
+        expires: 365
+      });
+      let item = this.clothes.find(item => item.link === itemUrl);
+      this.$set(item, "isFavourited", true);
+    },
+    unfavouriteItem(itemUrl) {
+      this.favouriteItems = this.favouriteItems.filter(
+        item => item !== itemUrl
+      );
+      Cookie.set("favourites", this.favouriteItems, {
+        expires: 365
+      });
+      let item = this.clothes.find(item => item.link === itemUrl);
+      this.$set(item, "isFavourited", false);
     }
   }
 };

@@ -8,7 +8,7 @@ class ClothesController < ApplicationController
       )
     clothes =
       website_pages.each_with_object([]) do |website_page, clothes|
-        clothes.concat(website_page.scrape_page(params[:page_number]))
+        clothes.concat(website_page.scrape_page(params[:page]))
       end
     render json: { 'clothes': clothes }
   end

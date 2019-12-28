@@ -10,9 +10,15 @@
       <p class="card-name capitalize">
         <b>{{ clothe.name }}</b>
       </p>
-      <p class="card-price">${{ clothe.price }}</p>
-      <i class="far fa-star" v-if="!clothe.isFavourited" v-on:click="favouriteItem(clothe.link)"></i>
-      <i class="fas fa-star" v-else v-on:click="unfavouriteItem(clothe.link)"></i>
+      <p class="card-price">
+        <span>${{ clothe.price }}</span>
+        <i
+          class="far fa-star clickable"
+          v-if="!clothe.isFavourited"
+          v-on:click="favouriteItem(clothe.link)"
+        ></i>
+        <i class="fas fa-star gold-star clickable" v-else v-on:click="unfavouriteItem(clothe.link)"></i>
+      </p>
       <p v-if="clothe.sizzle_text">{{ clothe.sizzle_text }}</p>
     </div>
   </div>
@@ -53,6 +59,14 @@ export default {
 
     .card-price {
       font-size: 0.95em;
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .gold-star {
+      color: gold;
     }
   }
 

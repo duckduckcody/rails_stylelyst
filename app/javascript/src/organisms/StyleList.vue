@@ -12,6 +12,9 @@
         This list has no styles.
         <br />Select 'Settings' in the top right to select your style.
       </span>
+      <span v-if="!loadingClothes && loadingError">Error loading your styles. Please try again.</span>
+    </div>
+    <div class="loading-container">
       <span v-if="loadingClothes && !loadingError">
         <i class="fas fa-spinner fa-spin"></i>
         Fetching
@@ -19,7 +22,6 @@
         <span v-if="clothes.length">more</span>
         styles...
       </span>
-      <span v-if="!loadingClothes && loadingError">Error loading your styles. Please try again.</span>
     </div>
   </div>
 </template>
@@ -110,5 +112,10 @@ export default {
     opacity: 0;
     transform: translateY(30px);
   }
+}
+
+.loading-container {
+  height: 40px;
+  text-align: center;
 }
 </style>

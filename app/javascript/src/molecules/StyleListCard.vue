@@ -6,7 +6,9 @@
       </a>
     </div>
     <div class="card-info-container">
-      <p class="card-brand uppercase font-weight-light" v-if="clothe.brand">{{ clothe.brand }}</p>
+      <p class="card-brand uppercase font-weight-light" v-if="clothe.brand">
+        {{ clothe.brand }}
+      </p>
       <p class="card-name capitalize">
         <b>{{ clothe.name }}</b>
       </p>
@@ -15,9 +17,13 @@
         <i
           class="far fa-star clickable"
           v-if="!clothe.isFavourited"
-          v-on:click="favouriteItem(clothe.link)"
+          v-on:click="favouriteItem(clothe)"
         ></i>
-        <i class="fas fa-star gold-star clickable" v-else v-on:click="unfavouriteItem(clothe.link)"></i>
+        <i
+          class="fas fa-star gold-star clickable"
+          v-else
+          v-on:click="unfavouriteItem(clothe)"
+        ></i>
       </p>
       <p v-if="clothe.sizzle_text">{{ clothe.sizzle_text }}</p>
     </div>

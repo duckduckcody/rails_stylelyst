@@ -14,7 +14,9 @@
         This list has no styles.
         <br />Select 'Settings' in the top right to select your style.
       </span>
-      <span v-if="!loadingClothes && loadingError">Error loading your styles. Please try again.</span>
+      <span v-if="!loadingClothes && loadingError"
+        >Error loading your styles. Please try again.</span
+      >
     </div>
     <div class="loading-container">
       <span v-if="loadingClothes && !loadingError">
@@ -37,6 +39,7 @@ import StyleListCard from "src/molecules/StyleListCard";
 
 export default {
   name: "styleList",
+  inject: ["notyf"],
   components: {
     StyleListCard
   },
@@ -107,23 +110,29 @@ export default {
       });
       return clothes;
     },
-    favouriteItem(itemUrl) {
-      this.favouriteItems.push(itemUrl);
+    favouriteItem(item) {
+      this.favouriteItems.push(item.link);
       Cookie.set("favourites", this.favouriteItems, {
         expires: 365
       });
-      let item = this.clothes.find(item => item.link === itemUrl);
       this.$set(item, "isFavourited", true);
+      this.notyf.success({
+        message: `${item.name} has been favourited`,
+        icon: { text: "❤️" }
+      });
     },
-    unfavouriteItem(itemUrl) {
+    unfavouriteItem(item) {
       this.favouriteItems = this.favouriteItems.filter(
-        item => item !== itemUrl
+        favouriteItem => favouriteItem !== item.link
       );
       Cookie.set("favourites", this.favouriteItems, {
         expires: 365
       });
-      let item = this.clothes.find(item => item.link === itemUrl);
       this.$set(item, "isFavourited", false);
+      this.notyf.success({
+        message: `${item.name} has been unfavourited`,
+        icon: { text: "👋" }
+      });
     }
   }
 };

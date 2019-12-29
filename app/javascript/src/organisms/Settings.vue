@@ -1,5 +1,5 @@
 <template>
-  <form id="settingsForm" class="settings-form">
+  <form id="settingsForm">
     <div v-if="loadingSettings" class="empty-message">
       <i class="fas fa-spinner fa-spin"></i>
       Loading Settings
@@ -166,23 +166,19 @@ export default {
 <style lang="scss" scoped>
 @import "../variables";
 
-.settings-form {
-  padding: $base-header-height 25px 0;
+.settings-category-radio-container {
+  display: flex;
+  flex-flow: row wrap;
 
-  .settings-category-radio-container {
-    display: flex;
-    flex-flow: row wrap;
+  .settings-category-radio {
+    flex: 0 0 25%;
 
-    .settings-category-radio {
-      flex: 0 0 25%;
+    @media screen and (min-width: $phone) and (max-width: $tablet) {
+      flex: 0 0 50%;
+    }
 
-      @media screen and (min-width: $phone) and (max-width: $tablet) {
-        flex: 0 0 50%;
-      }
-
-      @media screen and (max-width: $phone) {
-        flex: 0 0 100%;
-      }
+    @media screen and (max-width: $phone) {
+      flex: 0 0 100%;
     }
   }
 }

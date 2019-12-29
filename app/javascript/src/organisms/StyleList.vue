@@ -133,7 +133,6 @@ export default {
 @import "../variables";
 
 .cards-container {
-  margin-top: $base-header-height;
   display: flex;
   flex-flow: row wrap;
 

@@ -1,7 +1,13 @@
 <template>
   <div class="header">
-    <h1 class="header-brand">stylelyst</h1>
-    <router-link class="header-settings header-link" to="/settings">Settings</router-link>
+    <router-link class="text-decoration-none" to="/">
+      <h1 class="header-brand">stylelyst</h1>
+    </router-link>
+
+    <div class="header-links">
+      <router-link class="header-link" to="/favourites">Favourites</router-link>
+      <router-link class="header-link" to="/settings">Settings</router-link>
+    </div>
   </div>
 </template>
 
@@ -23,38 +29,43 @@ export default {
   top: 0;
   width: 100%;
   height: $base-header-height;
-  padding: 0 20px;
+  padding: 0 40px;
   background-color: white;
   font-size: 16px;
+  box-sizing: border-box;
+
+  * {
+    box-sizing: inherit;
+  }
 
   .header-brand {
     font-size: 2em;
+    color: $blue_black;
+    margin: 0;
   }
 
-  .header-page {
+  .header-links {
     font-size: 1em;
-  }
 
-  .header-link {
-    font-size: 1em;
-  }
+    > a {
+      margin-right: 5px;
+    }
 
-  * {
-    margin: 0 15px 0 0;
-  }
+    :last-child {
+      margin-right: 0;
+    }
 
-  a:last-child {
-    margin: 0 0 0 auto;
+    .header-link {
+      color: $blue_black;
+    }
   }
 
   @media screen and (min-width: $phone) and (max-width: $tablet) {
-    padding: 0 10px;
-    font-size: 15px;
+    font-size: 14px;
   }
 
   @media screen and (max-width: $phone) {
-    padding: 0 5px;
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 </style>

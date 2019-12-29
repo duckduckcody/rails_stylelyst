@@ -1,7 +1,7 @@
 <template>
   <div>
     <Header />
-    <div>
+    <div class="view-container">
       <router-view></router-view>
     </div>
   </div>
@@ -20,4 +20,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "./variables";
+
+.view-container {
+  margin: $base-header-height 25px 0;
+}
 </style>

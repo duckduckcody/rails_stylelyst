@@ -6,7 +6,7 @@
       :key="favouriteItem"
       class="favouriteItem"
     >
-      {{ favouriteItem }}
+      <a :href="favouriteItem" target="_blank">{{ favouriteItem }}</a>
       <i
         class="fas fa-star gold-star clickable"
         v-on:click="unfavouriteItem(favouriteItem)"

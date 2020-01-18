@@ -30,8 +30,7 @@
         <div v-if="!matchedCategories.length">Please select a gender</div>
       </div>
 
-      <h3 class="title">Website</h3>
-      <p class="subtitle">(more websites coming soon)</p>
+      <h3>Website (more websites coming soon)</h3>
       <div v-for="website in websites" :key="'website_' + website.id">
         <input type="checkbox" :id="website.id" :value="website.id" v-model="formData.websites" />
         <label :for="website.id">{{ website.name }}</label>
@@ -167,29 +166,29 @@ export default {
 <style lang="scss" scoped>
 @import "../variables";
 
-.title {
-  margin-bottom: 0;
-}
+#settingsForm {
+  padding: 0 15px;
 
-.subtitle {
-  margin-bottom: 18px;
-  font-weight: light;
-}
+  h3 {
 
-.settings-category-radio-container {
-  display: flex;
-  flex-flow: row wrap;
-
-  .settings-category-radio {
-    flex: 0 0 25%;
-
-    @media screen and (min-width: $phone) and (max-width: $tablet) {
-      flex: 0 0 50%;
-    }
-
-    @media screen and (max-width: $phone) {
-      flex: 0 0 100%;
-    }
+    font-family: $pretty-font-family;
   }
+
+  .settings-category-radio-container {
+    display: flex;
+    flex-flow: row wrap;
+
+    .settings-category-radio {
+      flex: 0 0 25%;
+
+      @media screen and (min-width: $phone) and (max-width: $tablet) {
+        flex: 0 0 50%;
+      }
+
+      @media screen and (max-width: $phone) {
+        flex: 0 0 100%;
+      }
+    }
+  } 
 }
 </style>

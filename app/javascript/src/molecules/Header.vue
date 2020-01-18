@@ -39,6 +39,7 @@ export default {
   }
 
   .header-brand {
+    font-family: $pretty-font-family;
     font-size: 2em;
     color: $blue_black;
     margin: 0;

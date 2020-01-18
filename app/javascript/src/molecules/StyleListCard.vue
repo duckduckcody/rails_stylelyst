@@ -15,12 +15,12 @@
       <p class="card-price">
         <span>${{ clothe.price }}</span>
         <i
-          class="far fa-star clickable"
+          class="far fa-heart clickable"
           v-if="!clothe.isFavourited"
           v-on:click="favouriteItem(clothe)"
         ></i>
         <i
-          class="fas fa-star gold-star clickable"
+          class="fas fa-heart color-red clickable"
           v-else
           v-on:click="unfavouriteItem(clothe)"
         ></i>
@@ -61,6 +61,7 @@ export default {
 
     .card-name {
       font-size: 1em;
+      font-family: $pretty-font-family;
     }
 
     .card-price {
@@ -69,10 +70,6 @@ export default {
       flex-flow: row nowrap;
       justify-content: space-between;
       align-items: center;
-    }
-
-    .gold-star {
-      color: gold;
     }
   }
 

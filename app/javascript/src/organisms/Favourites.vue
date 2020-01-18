@@ -8,7 +8,7 @@
     >
       <a :href="favouriteItem" target="_blank">{{ favouriteItem }}</a>
       <i
-        class="fas fa-star gold-star clickable"
+        class="fas fa-heart color-red clickable"
         v-on:click="unfavouriteItem(favouriteItem)"
       />
     </div>
@@ -52,9 +52,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.gold-star {
-  color: gold;
 }
 </style>

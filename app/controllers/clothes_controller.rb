@@ -3,7 +3,7 @@ class ClothesController < ApplicationController
 
   def get_all_clothes
     if !params[:category].present? || !params[:websites].present?
-      return render json: { 'clothes': []}
+      return render json: { 'clothes': [] }
     end
 
     website_pages =

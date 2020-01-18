@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <router-link class="text-decoration-none" to="/">
-      <h1 class="header-brand">stylelyst</h1>
+      <h1 class="header-brand">stylelist</h1>
     </router-link>
 
     <div class="header-links">
